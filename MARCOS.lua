@@ -787,21 +787,6 @@ local keyboard = {
 {'تحديث السورس ™','معلومات السيرفر 📊'},
 {'الغاء ✖'}
 }
-{ تعيين اسم البوت },
-{ تعطيل التواصل , تفعيل التواصل },
-{ قائمة المطورين },
-{ تعيين كليشة المطور , تعيين كليشة ستارت },
-{ تعيين كليشة السورس },
-{ اذاعة },
-{ تعطيل التنبية , تفعيل التنبية },
-{ تعطيل الترحيب العام , تفعيل الترحيب العام },
-{ وضع الترحيب العام },
-{ حذف رد عام , اضف رد عام },
-{ الردود العامة },
-{ تفعيل البوت الخدمي , تعطيل البوت الخدمي },
-{ جلب نسخه احتياطيه 📂 },
-{ تحديث السورس ™ , معلومات السيرفر 📊 },
-}
 send_inline_key(msg.chat_id_,bl,keyboard)
 else
 if not database:get(bot_id..'Start:Time'..msg.sender_user_id_) then
@@ -980,7 +965,7 @@ send(msg.chat_id_, msg.id_,'📮| اهلا عزيزى مطور اساسي \n🔰
 end
 if text == 'تحديث السورس ™' and SudoBot(msg) then 
 os.execute('rm -rf MARCOS.lua')
-os.execute('wget https://raw.githubusercontent.com/ALRAQE/ALRAGI/main/MARCOS.lua')
+os.execute('wget https://raw.githubusercontent.com/ALRAQE/ALRAQI/main/MARCOS.lua')
 send(msg.chat_id_, msg.id_,'*🔭| تم تحديث البوت \n📮| لديك اخر اصدار سورس الاسطورة\n📡| الاصدار ← {1.2v}*')
 dofile('MARCOS.lua')  
 end
@@ -2180,7 +2165,7 @@ end
 return false
 end
 os.execute('rm -rf MARCOS.lua')
-os.execute('wget https://raw.githubusercontent.com/ALRAQE/ALRAGI/main/MARCOS.lua')
+os.execute('wget https://raw.githubusercontent.com/ALRAQE/ALRAQI/main/MARCOS.lua')
 send(msg.chat_id_, msg.id_,'*🔭| تم تحديث البوت \n📮| لديك اخر اصدار سورس الاسطورة\n📡| الاصدار ← { 1.2v}*')
 dofile('MARCOS.lua')  
 end
