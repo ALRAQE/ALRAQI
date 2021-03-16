@@ -294,7 +294,7 @@ var = 'البوت🤖'
 elseif database:sismember(bot_id..'Sudo:User', user_id) then
 var = database:get(bot_id.."Sudo:Rd"..msg.chat_id_) or 'المطور👩‍🚒'  
 elseif database:sismember(bot_id..'CoSu'..chat_id, user_id) then
-var = database:get(bot_id.."CoSu:Rd"..msg.chat_id_) or 'المالك'
+var = database:get(bot_id.."CoSu:Rd"..msg.chat_id_) or 'اللاس'
 elseif database:sismember(bot_id..'Basic:Constructor'..chat_id, user_id) then
 var = database:get(bot_id.."BasicConstructor:Rd"..msg.chat_id_) or 'المنشئ الاساسي👩‍🚀'
 elseif database:sismember(bot_id..'Constructor'..chat_id, user_id) then
@@ -770,19 +770,18 @@ end
 if SudoBot(msg) then
 local bl = '⚜️| اهلا عزيزي آلمـطـور\n👨‍💻| آنت آلمـطـور آلآسـآسـي للبوت\n●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●ء\n🔘| تسـتطـيع‌‏ آلتحگم باوامر البوت\n🔰| من خلاال الكيبورد خاص بك\n📮| قناة سورس البوت [اضغط هنا](t.me/ASTORHBOTS)'
 local keyboard = {
-{'الاحصائيات 🔍'},
-{'تعطيل التواصل ✖️','تفعيل التواصل 🔛'},
-{'ضع اسم للبوت ®','المطورين 👷‍♂️'},
-{'قائمه العام 📝','قائمه الكتم العام ❃'},
-{'ضع كليشه ستارت 📃','حذف كليشه ستارت ♻️'},
-{'اذاعه قروبات👥','اذاعه خاص 🗣️','معلومات الكيبورد 💬'},
-{'تغير رساله الاشتراك','حذف رساله الاشتراك 🚫','تغير الاشتراك'},
-{'اذاعه بالتوجيه 🔖','اذاعه بالتوجيه خاص 📯'},
-{'اذاعه بالتثبيت'},
-{'تفعيل الاشتراك الاجباري 📥','تعطيل الاشتراك الاجباري 📤'},
-{'الاشتراك الاجباري 🚸','تفعيل الاشتراك الاول🌟'},
-{'تفعيل البوت الخدمي 🔓','تعطيل البوت الخدمي🔏'},
-{'تنظيف القروبات 🗑️','تنظيف المشتركين 🗑️'},
+{'تعيين اسم البوت'},
+{'تعطيل التواصل','تفعيل التواصل'},
+{'تعيين كليشة المطور','تعيين كليشة ستارت'},
+{'تعيين كليشة السورس'},
+{'قائمة المطورين','قائمه الكتم العام ❃'},
+{'تعطيل الترحيب العام','تفعيل الترحيب العام'},
+{'وضع الترحيب العام'},
+{'الردود العامة','حذف رد عام','اضف رد عام'},
+{'تعطيل التنبية','تفعيل التنبية'},
+{'اذاعة'},
+{'تفعيل البوت الخدمي','تعطيل البوت الخدمي'},
+{'تنظيف القروبات 🗑️'},
 {'جلب نسخه احتياطيه 📂','الاصدار 📟'},
 {'تحديث السورس ™','معلومات السيرفر 📊'},
 {'الغاء ✖'}
@@ -821,14 +820,14 @@ if result.forward_info_.sender_user_id_ then
 id_user = result.forward_info_.sender_user_id_    
 end     
 tdcli_function ({ID = "GetUser",user_id_ = id_user},function(arg,data) 
-if text == 'حظر' then
+if text == 'حbظر' then
 local Name = '['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..id_user..')'
 local Text = '📌| المستخدم » '..Name..'\n🔘|تم حظره من التواصل '
 sendText(SUDO,Text,msg.id_/2097152/0.5,'md')
 database:sadd(bot_id..'Ban:User_Bot',data.id_)  
 return false  
 end 
-if text =='الغاء الحظر' then
+if text =='الغاء الhhحظر' then
 local Name = '['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..id_user..')'
 local Text = '📌| المستخدم » '..Name..'\n🔘| تم حظره من التواصل '
 sendText(SUDO,Text,msg.id_/2097152/0.5,'md')
@@ -883,7 +882,7 @@ end,nil)
 end,nil)
 end,nil)
 end 
-if text == 'تفعيل التواصل 🔛' and SudoBot(msg) then  
+if text == 'تفعيل التواصhل 🔛' and SudoBot(msg) then  
 if database:get(bot_id..'Tuasl:Bots') then
 database:del(bot_id..'Tuasl:Bots') 
 Text = '\n🔘| تم تفعيل التواصل ' 
@@ -892,7 +891,7 @@ Text = '\n⚠️| بالتاكيد تم تفعيل التواصل '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل التواصل ✖️' and SudoBot(msg) then  
+if text == 'تعطيل التواصhل ✖️' and SudoBot(msg) then  
 if not database:get(bot_id..'Tuasl:Bots') then
 database:set(bot_id..'Tuasl:Bots',true) 
 Text = '\n🔘| تم تعطيل التواصل' 
@@ -901,7 +900,7 @@ Text = '\n⚠️| بالتاكيد تم تعطيل التواصل'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل البوت الخدمي 🔓' and SudoBot(msg) then  
+if text == 'تفعيل البوت الخدمbي 🔓' and SudoBot(msg) then  
 if database:get(bot_id..'Free:Bots') then
 database:del(bot_id..'Free:Bots') 
 Text = '\n🔘| تم تفعيل البوت الخدمي ' 
@@ -911,7 +910,7 @@ end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تعطيل البوت الخدمي 🔏' and SudoBot(msg) then  
-if not database:get(bot_id..'Free:Bots') then
+if not database:get(bot_idh..'Free:Bots') then
 database:set(bot_id..'Free:Bots',true) 
 Text = '\n🔘| تم تعطيل البوت الخدمي' 
 else
@@ -930,12 +929,12 @@ send(msg.chat_id_, msg.id_,'📝| تم حفظ كليشه ستارت')
 database:del(bot_id..'Start:Bots') 
 return false
 end
-if text == 'ضع كليشه ستارت 📃' and SudoBot(msg) then 
+if text == 'ضع كليشه ستارتj 📃' and SudoBot(msg) then 
 database:set(bot_id..'Start:Bots',true) 
 send(msg.chat_id_, msg.id_,'📑| ارسل لي الكليشه الان') 
 return false
 end
-if text == 'حذف كليشه ستارت ♻️' and SudoBot(msg) then 
+if text == 'حذف كليشه ستارhت ♻️' and SudoBot(msg) then 
 database:del(bot_id..'Start:Bot') 
 send(msg.chat_id_, msg.id_,'🔖|تم حذف كليشه ستارت') 
 end
@@ -959,7 +958,7 @@ echo '*———————————~*\n✺✔{ مـده تـشغيـل ال
 ]]):read('*all'))  
 end
 
-if text == 'معلومات الكيبورد 💬' and SudoBot(msg) then 
+if text == 'معلومات الكيبوردh 💬' and SudoBot(msg) then 
 database:del(bot_id..'Sart:Bot') 
 send(msg.chat_id_, msg.id_,'📮| اهلا عزيزى مطور اساسي \n🔰| معلومات كتالي↓\n1• الاحصائيات { لعرض عدد القروبات، والمشتركين في البوت }\n2• تفعيل التواصل { لتفعيل التواصل عبر البوت خاص بك}\n3• تعطيل التواصل { لتعطيل التواصل عبر البوت خاص بك }\n4• قائمه العام { لعرض المحظورين عام في البوت }\n5• المطورين { لعرض المطورين في بوتك } \n6• ضع اسم للبوت { لختيار اسم لبوت خاص بك }\n7• حذف كليشه ستارت { حذف كليشه عندما يضغط العضو علي كلمه /start }\n8• ضع كليشه ستارت { لختيار كلايشه /start جديدة }\n9• اذاعه { ارسال رساله لجميع القروبات في بوتك }\n10• اذاعه خاص { ارسال رساله لجميع مشتركين بوتك!}\n11• تعطيل الاشتراك الاجباري { لتعطيل الاشتراك جباري خاص بوتك}\n12• تفعيل الاشتراك الاجباري { لتفعيل الاشتراك الاجباري بوتك }\n13•اذاعه بالتوجيه { ارسال رساله بالتوجيه الي جميع القروبات }\n14• اذاعه بالتوجيه خاص { ارسال رساله بالتوجيه الي جميع المشتركين }\n15• حذف رساله الاشتراك { لحذف رساله الاشتراك التي اضفتها }\n16• تغير رساله الاشتراك { لتغير رساله الاشتراك خاصه بوتك وتختار غيرها }\n17• تغير الاشتراك {لتغير الاشتراك الاجباري خاص بوتك واضافت قناة غيرها }\n18• تفعيل الاشتراك الاول { لتفعيل الاشتراك جباري عندما تفعيل البوت اول مَـرّھٌ }\n19• الاشتراك الاجباري { لظهار القناة مفعل الاشتراك عليها }\n20• تفعيل البوت الخدمي { يمكن هاذا امر ان منشئ القروب يفعل البوت م̷ـــِْن دون حتياجه لمطور البوت\n21• تعطيل البوت الخدمي { يمك هل خاصيه ان تفعيل البوت اله مطورين البوت فقط }\n22• تنظيف المشتركين { يمكنك ازاله المشتركين الوهمين عبر هل امر }\n23• تنظيف القروبات { يمكن ازاله المجموعات الوهميه عبر عل امر }\n24• جلب نسخه احتياطيه { لعرض ملف المجموعات بوتك }\n25• تحديث السورس { لتحديث السورس خاص بوتك }\n26• الغاء { للغاء الامر الذي طلبته }\n===ء====================\n🔰| اوامر كيبورد المطور االاساسي معا شرح\n📮| قناة السورس [ضغط هنا](t.me/ASTORHBOTS) \n💬| مطور السورس [اضغط هنا](t.me/AST0RH)') 
 end
@@ -969,19 +968,19 @@ os.execute('wget https://raw.githubusercontent.com/ALRAQE/ALRAQI/main/MARCOS.lua
 send(msg.chat_id_, msg.id_,'*🔭| تم تحديث البوت \n📮| لديك اخر اصدار سورس الاسطورة\n📡| الاصدار ← {1.2v}*')
 dofile('MARCOS.lua')  
 end
-if text == "ضع اسم للبوت ®" and SudoBot(msg) then  
+if text == "ضع اسم للبوتl ®" and SudoBot(msg) then  
 database:setex(bot_id..'Set:Name:Bot'..msg.sender_user_id_,300,true) 
 send(msg.chat_id_, msg.id_,"📫¦ ارسل لي الاسم الان ")  
 return false
 end
-if text == 'الاحصائيات 🔍' and SudoBot(msg) then 
+if text == 'الاحصائيات l🔍' and SudoBot(msg) then 
 local Groups = database:scard(bot_id..'Chek:Groups')  
 local Users = database:scard(bot_id..'User_Bot')  
 Text = '🔰| احصائيات البوت \n'..'👥|عدد المجموعات »{'..Groups..'}'..'\n👤| عدد المشتركين »{'..Users..'}'
 send(msg.chat_id_, msg.id_,Text) 
 return false
 end
-if text == ("المطورين 👷‍♂️") and SudoBot(msg) then
+if text == ("المطورين k👷‍♂️") and SudoBot(msg) then
 local list = database:smembers(bot_id..'Sudo:User')
 t = "\n📑| قائمة مطورين البوت \n━━━━━━━━━━━━━\n"
 for k,v in pairs(list) do
@@ -997,7 +996,7 @@ t = "✖| لا يوجد مطورين"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == ("قائمه العام 📝") and SudoBot(msg) then
+if text == ("قائمه العام j📝") and SudoBot(msg) then
 local list = database:smembers(bot_id..'GBan:User')
 t = "\n⛔¦ قائمة المحظورين عام \n━━━━━━━━━━━━━\n"
 for k,v in pairs(list) do
@@ -1031,27 +1030,27 @@ end
 send(msg.chat_id_, msg.id_, t)
 return false
 end
-if text=="اذاعه خاص 🗣️" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
+if text=="اذاعه خاص h🗣️" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 database:setex(bot_id.."Send:Bc:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
 send(msg.chat_id_, msg.id_,"📥¦ ارسل لي سواء >> { ملصق, متحركه, صوره, رساله }\n📫¦ للخروج ارسل الغاء ") 
 return false
 end 
-if text=="اذاعه قروبات👥" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
+if text=="اذاعه قروباتj👥" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 database:setex(bot_id.."Send:Bc:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
 send(msg.chat_id_, msg.id_,"📥¦ ارسل لي سواء >> { ملصق, متحركه, صوره, رساله }\n📫¦ للخروج ارسل الغاء ") 
 return false
 end  
-if text=="اذاعه بالتوجيه 🔖" and msg.reply_to_message_id_ == 0  and SudoBot(msg) then 
+if text=="اذاعه بالتوجيه h🔖" and msg.reply_to_message_id_ == 0  and SudoBot(msg) then 
 database:setex(bot_id.."Send:Fwd:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
 send(msg.chat_id_, msg.id_,"📥| ارسل لي التوجيه الان") 
 return false
 end 
-if text=="اذاعه بالتوجيه خاص 📯" and msg.reply_to_message_id_ == 0  and SudoBot(msg) then 
+if text=="اذاعه بالتوجيه خاgfص 📯" and msg.reply_to_message_id_ == 0  and SudoBot(msg) then 
 database:setex(bot_id.."Send:Fwd:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
 send(msg.chat_id_, msg.id_,"📥| ارسل لي التوجيه الان") 
 return false
 end 
-if text=="اذاعه بالتثبيت" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
+if text=="اذاعه بhالتثبيت" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 database:setex(bot_id.."Bc:Grops:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
 send(msg.chat_id_, msg.id_,"🔘┇ارسل لي سواء ~ { ملصق, متحركه, صوره, رساله }\n📫┇للخروج ارسل الغاء ") 
 return false
@@ -1059,7 +1058,7 @@ end
 if text == 'جلب نسخه احتياطيه 📂' and SudoBot(msg) then 
 GetFile_Bot(msg)
 end
-if text == "تنظيف المشتركين 🗑️" and SudoBot(msg) then 
+if text == "تنظيف المfdشتركين 🗑️" and SudoBot(msg) then 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -1151,8 +1150,8 @@ end,nil)
 end
 return false
 end
-if text and text:match("^رفع مطور @(.*)$") and SudoBot(msg) then
-local username = text:match("^رفع مطور @(.*)$")
+if text and text:match("^رفاااع مطور @(.*)$") and SudoBot(msg) then
+local username = text:match("^رفااااع مطور @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -1180,8 +1179,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false 
 end
-if text and text:match("^رفع مطور (%d+)$") and SudoBot(msg) then
-local userid = text:match("^رفع مطور (%d+)$")
+if text and text:match("^رفع مالللتنطور (%d+)$") and SudoBot(msg) then
+local userid = text:match("^رفعابتر مطور (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -1204,8 +1203,8 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false 
 end
-if text and text:match("^تنزيل مطور @(.*)$") and SudoBot(msg) then
-local username = text:match("^تنزيل مطور @(.*)$")
+if text and text:match("^تنزيليررل مطور @(.*)$") and SudoBot(msg) then
+local username = text:match("^تنالترزيل مطور @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -1229,8 +1228,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end  
-if text and text:match("^تنزيل مطور (%d+)$") and SudoBot(msg) then
-local userid = text:match("^تنزيل مطور (%d+)$")
+if text and text:match("^تلاامزهو (%d+)$") and SudoBot(msg) then
+local userid = text:match("^تلاامزهو (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -1993,25 +1992,25 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'👥¦ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n 📌¦ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chgat_id_, msg.id_,'👥¦ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n 📌¦ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,'🚸¦ البوت ليس ادمن يرجى ترقيتي !') 
+send(msg.chgat_id_, msg.id_,'🚸¦ البوت ليس ادمن يرجى ترقيتي !') 
 return false  
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
 if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not SudoBot(msg) then
-send(msg.chat_id_, msg.id_,'🔖¦ عدد اعضاء المجموعه قليله يرجى جمع >> {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
+send(msg.chgat_id_, msg.id_,'🔖¦ عدد اعضاء المجموعه قليله يرجى جمع >> {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'*🔖┇ يا عيني مفعل من زمان لا تزعجنا ♥️*')
+send(msg.chgat_id_, msg.id_,'*🔖┇ يا عيني مفعل من زمان لا تزعجنا ♥️*')
 else
-sendText(msg.chat_id_,'\n👤| بواسطه ← ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n📝|  تم تفعيل المجموعه {'..chat.title_..'}',msg.id_/2097152/0.5,'md')
+sendText(msg.chhat_id_,'\n👤| بواسطه ← ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n📝|  تم تفعيل المجموعه {'..chat.title_..'}',msg.id_/2097152/0.5,'md')
 database:sadd(bot_id..'Chek:Groups',msg.chat_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NameChat = chat.title_
@@ -2030,7 +2029,7 @@ Text = '🔖| تم تفعيل مجموعه جديده\n'..
 '\n🔖|عدد اعضاء المجموعه *{'..NumMember..'}*'..
 '\n🖇️| الرابط {['..LinkGp..']}'
 if not SudoBot(msg) then
-sendText(SUDO,Text,0,'md')
+sendText(SUDhhO,Text,0,'md')
 end
 end
 end,nil) 
@@ -2043,16 +2042,16 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'🔖| لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n 📌| اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chggat_id_, msg.id_,'🔖| لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n 📌| اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if not database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'🔖¦ المجموعه تم تطيلها من قبل')
+send(msg.chggat_id_, msg.id_,'🔖¦ المجموعه تم تطيلها من قبل')
 else
-sendText(msg.chat_id_,'\n👤| بواسطه ← ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n📌| تم تعطيل المجموعه {'..chat.title_..'}',msg.id_/2097152/0.5,'md')
+sendText(msg.chgggat_id_,'\n👤| بواسطه ← ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n📌| تم تعطيل المجموعه {'..chat.title_..'}',msg.id_/2097152/0.5,'md')
 database:srem(bot_id..'Chek:Groups',msg.chat_id_)  
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NameChat = chat.title_
@@ -2070,7 +2069,7 @@ Text = '\nتم تعطيل المجموعه |🔖'..
 '\n👥|اسم المجموعه {['..NameChat..']}'..
 '\n🖇️| الرابط {['..LinkGp..']}'
 if not SudoBot(msg) then
-sendText(SUDO,Text,0,'md')
+sendText(SUDuO,Text,0,'md')
 end
 end
 end,nil) 
@@ -2082,17 +2081,17 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'🔖| لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n 📌| اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chagt_id_, msg.id_,'🔖| لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n 📌| اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,'🚸¦ البوت ليس ادمن يرجى ترقيتي !') 
+send(msg.chgat_id_, msg.id_,'🚸¦ البوت ليس ادمن يرجى ترقيتي !') 
 return false  
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
 if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not SudoBot(msg) then
-send(msg.chat_id_, msg.id_,'🔖¦ عدد اعضاء المجموعه قليله يرجى جمع >> {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
+send(msg.chagt_id_, msg.id_,'🔖¦ عدد اعضاء المجموعه قليله يرجى جمع >> {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -2101,14 +2100,14 @@ tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sen
 if da and da.status_.ID == "ChatMemberStatusEditor" or da and da.status_.ID == "ChatMemberStatusCreator" then
 if da and da.user_id_ == msg.sender_user_id_ then
 if da.status_.ID == "ChatMemberStatusCreator" then
-var = 'المالك'
+var = 'اللاس'
 elseif da.status_.ID == "ChatMemberStatusEditor" then
 var = 'مشرف'
 end
 if database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'📌| تم تفعيل المجموعه بنجاح')
+send(msg.chaht_id_, msg.id_,'📌| تم تفعيل المجموعه بنجاح')
 else
-sendText(msg.chat_id_,'\n👤¦ بواسطه ← ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n✔️¦ تم تفعيل المجموعه {'..chat.title_..'}',msg.id_/2097152/0.5,'md')
+sendText(msg.chhat_id_,'\n👤¦ بواسطه ← ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n✔️¦ تم تفعيل المجموعه {'..chat.title_..'}',msg.id_/2097152/0.5,'md')
 database:sadd(bot_id..'Chek:Groups',msg.chat_id_)  
 database:sadd(bot_id..'CoSu'..msg.chat_id_, msg.sender_user_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
@@ -2130,7 +2129,7 @@ Text = '🔖| تم تفعيل مجموعه جديده\n'..
 '\n📝| اسم المجموعه {['..NameChat..']}'..
 '\n🖇️| الرابط {['..LinkGp..']}'
 if not SudoBot(msg) then
-sendText(SUDO,Text,0,'md')
+sendText(SUDyO,Text,0,'md')
 end
 end
 end
@@ -2140,8 +2139,8 @@ end,nil)
 end,nil) 
 end,nil)
 end
-if text and text:match("^ضع عدد الاعضاء (%d+)$") and SudoBot(msg) then
-local Num = text:match("ضع عدد الاعضاء (%d+)$") 
+if text and text:match("^ضع عدد اhhhhلاعضاء (%d+)$") and SudoBot(msg) then
+local Num = text:match("ضع عدد الاhhhhhعضاء (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2172,17 +2171,17 @@ end
 
 
 
-if text and text:match("^تغير الاشتراك$") and SudoBot(msg) then  
+if text and text:match("^تغير اhhhhلاشتراك$") and SudoBot(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '⚡| حسنآ ارسل لي معرف القناة') 
 return false  
 end
-if text and text:match("^تغير رساله الاشتراك$") and SudoBot(msg) then  
+if text and text:match("^تغير رساله اjjjjلاشتراك$") and SudoBot(msg) then  
 database:setex(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '📌| حسنآ ارسل لي النص الذي تريده') 
 return false  
 end
-if text == "حذف رساله الاشتراك 🚫" and SudoBot(msg) then  
+if text == "حذف رساله الاشhhhhتراك 🚫" and SudoBot(msg) then  
 database:del(bot_id..'text:ch:user')
 send(msg.chat_id_, msg.id_, "🔘| تم مسح رساله الاشتراك ") 
 return false  
@@ -2192,7 +2191,7 @@ database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_,
 send(msg.chat_id_, msg.id_, '🔰| حسنآ ارسل لي معرف القناة') 
 return false  
 end
-if text == "تفعيل الاشتراك الاجباري 📥" and SudoBot(msg) then  
+if text == "تفعيل الاشتراك الاجباjjjjري 📥" and SudoBot(msg) then  
 if database:get(bot_id..'add:ch:id') then
 local addchusername = database:get(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_,"📮| الاشتراك الاجباري مفعل \n🔘| على القناة » ["..addchusername.."]")
@@ -2202,13 +2201,13 @@ send(msg.chat_id_, msg.id_,"🔖| اهلا عزيزي المطور \n📌| ار�
 end
 return false  
 end
-if text == "تعطيل الاشتراك الاجباري 📤" and SudoBot(msg) then  
+if text == "تعطيل الاشتراك الاجبارjjjjي 📤" and SudoBot(msg) then  
 database:del(bot_id..'add:ch:id')
 database:del(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_, "🔖| تم تعطيل الاشتراك الاجباري ") 
 return false  
 end
-if text == "الاشتراك الاجباري 🚸" and SudoBot(msg) then  
+if text == "الاشتراك الاجباريjjjjj 🚸" and SudoBot(msg) then  
 if database:get(bot_id..'add:ch:username') then
 local addchusername = database:get(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_, "🔖| تم تفعيل الاشتراك الاجباري \n🚸| على القناة » ["..addchusername.."]")
@@ -2218,7 +2217,7 @@ end
 return false  
 end
 
-if text == 'السورس' or text == 'يا سورس' then
+if text == 'السوjkkkرس' or text == 'يا سklnnورس' then
 Text = [[
 🙋︙اهلا بكـ في سورس الاسطورة 🦅
 🕹 : السـورس الاقوئ في الوطن العربي
@@ -2271,7 +2270,7 @@ return false
 end
 GetFile_Bot(msg)
 end
-if text == 'الاوامر المضافه' and Constructor(msg) then
+if text == 'الاوامر الjjjjjمضافه' and Constructor(msg) then
 local list = database:smembers(bot_id..'List:Cmd:Group:New'..msg.chat_id_..'')
 t = "📮| قائمه الاوامر المضافه  \n●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●\n"
 for k,v in pairs(list) do
@@ -2288,7 +2287,7 @@ t = "⚠️| لا يوجد اوامر مضافه"
 end
 send(msg.chat_id_, msg.id_,'['..t..']')
 end
-if text == 'حذف الاوامر المضافه' or text == 'مسح الاوامر المضافه' then
+if text == 'حذف الاوامر المjjjjضافه' or text == 'مسح الاوامر الjjjjمضافه' then
 if Constructor(msg) then 
 local list = database:smembers(bot_id..'List:Cmd:Group:New'..msg.chat_id_)
 for k,v in pairs(list) do
@@ -2298,7 +2297,7 @@ end
 send(msg.chat_id_, msg.id_,'💠| تم ازالة جميع الاوامر المضافه')  
 end
 end
-if text == 'اضف امر' and Constructor(msg) then
+if text == 'اضف hhhhhامر' and Constructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2312,7 +2311,7 @@ database:set(bot_id.."Set:Cmd:Group"..msg.chat_id_..':'..msg.sender_user_id_,'tr
 send(msg.chat_id_, msg.id_,'📌| ارسل الامر القديم')  
 return false
 end
-if text == 'حذف امر' or text == 'مسح امر' then 
+if text == 'حذف hghhامر' or text == 'مسح اjjjnمر' then 
 if Constructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -2344,64 +2343,64 @@ database:del(bot_id.."Set:Cmd:Group1"..msg.chat_id_..':'..msg.sender_user_id_)
 return false
 end
 --------------------------------------------------------------------------------------------------------------
-if text == 'قفل الدردشه' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
+if text == 'قفليه الدردشه' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
 database:set(bot_id.."lock:text"..msg.chat_id_,true) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)  
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الدردشه ')  
 end,nil)   
-elseif text == 'قفل الاضافه' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
+elseif text == 'قفليه الاضافه' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:set(bot_id.."lock:AddMempar"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n??| تـم قفـل اضافة الاعضاء ')  
 end,nil)   
-elseif text == 'قفل الدخول' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
+elseif text == 'قفليه الدخول' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:set(bot_id.."lock:Join"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل دخول الاعضاء ')  
 end,nil)   
-elseif text == 'قفل البوتات' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
+elseif text == 'قفليه البوتات' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:set(bot_id.."lock:Bot:kick"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل البوتات ')  
 end,nil)   
-elseif text == 'قفل البوتات بالطرد' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
+elseif text == 'قفليه البوتات بالطرد' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:set(bot_id.."lock:Bot:kick"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل البوتات بالطرد\n⛔| الحاله ←الطرد')  
 end,nil)   
-elseif text == 'قفل الاشعارات' and msg.reply_to_message_id_ == 0 and Mod(msg) then  
+elseif text == 'قفليه الاشعارات' and msg.reply_to_message_id_ == 0 and Mod(msg) then  
 database:set(bot_id..'lock:tagservr'..msg.chat_id_,true)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الاشعارات ')  
 end,nil)   
-elseif text == 'قفل التثبيت' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
+elseif text == 'قفليه التثبيت' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
 database:set(bot_id.."lockpin"..msg.chat_id_, true) 
 database:sadd(bot_id..'lock:pin',msg.chat_id_) 
 tdcli_function ({ ID = "GetChannelFull",  channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  database:set(bot_id..'Pin:Id:Msg'..msg.chat_id_,data.pinned_message_id_)  end,nil)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل التثبيت هنا ')  
 end,nil)   
-elseif text == 'قفل التعديل' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
+elseif text == 'قفليه التعديل' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
 database:set(bot_id..'lock:edit'..msg.chat_id_,true) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل تعديل ')  
 end,nil)   
-elseif text == 'قفل الفشار' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
+elseif text == 'قفليه الفشار' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
 database:set(bot_id..'lock:Fshar'..msg.chat_id_,true) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'⌯┇بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n⌯┇تـم قفـل الفشار ')
 end,nil)  
-elseif text == 'قفل الفارسيه' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
+elseif text == 'قفليه الفارسيه' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
 database:set(bot_id..'lock:Fars'..msg.chat_id_,true) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'⌯┇بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n⌯┇تـم قفـل الفارسيه ')
 end,nil)
-elseif text == 'قفل تعديل الميديا' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
+elseif text == 'قفليه تعديل الميديا' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
 database:set(bot_id..'lock:edit'..msg.chat_id_,true) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل تعديل  ')  
+send(msg.chat_id_, msg.id_,'??| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل تعديل  ')  
 end,nil)   
-elseif text == 'قفل الكل' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
+elseif text == 'قفليه الكل' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:set(bot_id..'lock:tagservrbot'..msg.chat_id_,true)   
 list ={"lock:Bot:kick","lock:user:name","lock:hashtak","lock:Cmd","lock:Link","lock:forward","lock:Keyboard","lock:geam","lock:Photo","lock:Animation","lock:Video","lock:Audio","lock:vico","lock:Sticker","lock:Document","lock:Unsupported","lock:Markdaun","lock:Contact","lock:Spam"}
 for i,lock in pairs(list) do 
@@ -2411,63 +2410,63 @@ tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,dat
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل جميع الاوامر ')  
 end,nil)   
 end
-if text == 'فتح الاضافه' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
+if text == 'فتح الاضاhjjفه' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:del(bot_id.."lock:AddMempar"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح اضافة الاعضاء ')  
 end,nil)   
-elseif text == 'فتح الدردشه' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
+elseif text == 'فتح الدردnnnnشه' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
 database:del(bot_id.."lock:text"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الدردشه ')  
 end,nil)   
-elseif text == 'فتح الدخول' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
+elseif text == 'فتح الدخhhhhول' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:del(bot_id.."lock:Join"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح دخول الاعضاء ')  
 end,nil)   
-elseif text == 'فتح البوتات' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
+elseif text == 'فتح البوتاjjjjت' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:del(bot_id.."lock:Bot:kick"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فـتح البوتات ')  
 end,nil)   
-elseif text == 'فتح البوتات بالطرد' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
+elseif text == 'فتح البوتات hhjjبالطرد' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:del(bot_id.."lock:Bot:kick"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') ??\n🔘| تـم فـتح البوتات بالطرد\n⛔| الحاله ←الطرد')  
 end,nil)   
-elseif text == 'فتح الاشعارات' and msg.reply_to_message_id_ == 0 and Mod(msg) then  
+elseif text == 'فتح الاشعاjjjjرات' and msg.reply_to_message_id_ == 0 and Mod(msg) then  
 database:del(bot_id..'lock:tagservr'..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فـتح الاشعارات ')  
 end,nil)   
-elseif text == 'فتح التثبيت' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
+elseif text == 'فتح التثhjjjjبيت' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
 database:del(bot_id.."lockpin"..msg.chat_id_)  
 database:srem(bot_id..'lock:pin',msg.chat_id_)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فـتح التثبيت هنا ')  
 end,nil)   
-elseif text == 'فتح التعديل' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
+elseif text == 'فتح التعدjjjjjيل' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
 database:del(bot_id..'lock:edit'..msg.chat_id_) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فـتح تعديل  ')  
 end,nil)   
-elseif text == 'فتح الفشار' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
+elseif text == 'فتح الفشhhhhhار' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
 database:del(bot_id..'lock:Fshar'..msg.chat_id_) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'⌯┇بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n⌯┇تـم فـتح الفشار ')
 end,nil)   
-elseif text == 'فتح الفارسيه' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
+elseif text == 'فتح الفارhhhhhسيه' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
 database:del(bot_id..'lock:Fars'..msg.chat_id_) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'⌯┇بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n⌯┇تـم فـتح الفارسيه ')
 end,nil)
-elseif text == 'فتح التعديل الميديا' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
+elseif text == 'فتح التعديل المjjjjjيديا' and msg.reply_to_message_id_ == 0 and Constructor(msg) then 
 database:del(bot_id..'lock:edit'..msg.chat_id_) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فـتح تعديل  ')  
 end,nil)   
-elseif text == 'فتح الكل' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
+elseif text == 'فتح الhhhhكل' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:del(bot_id..'lock:tagservrbot'..msg.chat_id_)   
 list ={"lock:Bot:kick","lock:user:name","lock:hashtak","lock:Cmd","lock:Link","lock:forward","lock:Keyboard","lock:geam","lock:Photo","lock:Animation","lock:Video","lock:Audio","lock:vico","lock:Sticker","lock:Document","lock:Unsupported","lock:Markdaun","lock:Contact","lock:Spam"}
 for i,lock in pairs(list) do 
@@ -2477,487 +2476,487 @@ tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,dat
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فـتح جميع الاوامر ')  
 end,nil)   
 end
-if text == 'قفل الروابط' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليه الروابط' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Link"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الروابط ')  
 end,nil)   
-elseif text == 'قفل الروابط بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه الروابط بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Link"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الروابط بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل الروابط بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه الروابط بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Link"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الروابط بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل الروابط بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه الروابط بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Link"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الروابط بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح الروابط' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح الرjjjjوابط' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Link"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الروابط ')  
 end,nil)   
 end
-if text == 'قفل المعرفات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليه المعرفات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:user:name"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل المعرفات ')  
 end,nil)   
-elseif text == 'قفل المعرفات بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه المعرفات بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:user:name"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل المعرفات بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل المعرفات بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه المعرفات بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:user:name"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل المعرفات بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل المعرفات بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه المعرفات بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:user:name"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n??| تـم قفـل المعرفات بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح المعرفات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح المعرفjjjjjات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:user:name"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح المعرفات ')  
 end,nil)   
 end
-if text == 'قفل التاك' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليه التاك' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:hashtak"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل التاك ')  
 end,nil)   
-elseif text == 'قفل التاك بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه التاك بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:hashtak"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل التاك بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل التاك بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه التاك بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:hashtak"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..string.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل التاك بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل التاك بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه التاك بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:hashtak"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل التاك بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح التاك' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح الhhjjتاك' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:hashtak"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح التاك ')  
 end,nil)   
 end
-if text == 'قفل الشارحه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليه الشارحه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Cmd"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الشارحه ')  
 end,nil)   
-elseif text == 'قفل الشارحه بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه الشارحه بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Cmd"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الشارحه بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل الشارحه بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه الشارحه بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Cmd"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الشارحه بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل الشارحه بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه الشارحه بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Cmd"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الشارحه بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح الشارحه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح الشhhhhارحه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Cmd"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الشارحه ')  
 end,nil)   
 end
-if text == 'قفل الصور'and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليه الصور'and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Photo"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الصور ')  
 end,nil)   
-elseif text == 'قفل الصور بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه الصور بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Photo"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الصور بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل الصور بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليه الصور بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Photo"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الصور بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل الصور بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الصور بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Photo"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الصور بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح الصور' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح hhhh' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Photo"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الصور ')  
 end,nil)   
 end
-if text == 'قفل الفيديو' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليهاب الفيديو' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Video"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الفيديو ')  
 end,nil)   
-elseif text == 'قفل الفيديو بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الفيديو بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Video"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الفيديو بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل الفيديو بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الفيديو بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Video"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الفيديو بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل الفيديو بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الفيديو بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Video"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الفيديو بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح الفيديو' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح الhhhhhفيديو' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Video"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الفيديو ')  
 end,nil)   
 end
-if text == 'قفل المتحركه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليهاب المتحركه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Animation"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل المتحركه ')  
 end,nil)   
-elseif text == 'قفل المتحركه بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب المتحركه بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Animation"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل المتحركه بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل المتحركه بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب المتحركه بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Animation"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل المتحركه بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل المتحركه بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب المتحركه بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Animation"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل المتحركه بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح المتحركه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح المتhhhhحركه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Animation"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح المتحركه ')  
 end,nil)   
 end
-if text == 'قفل الالعاب' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليهاب الالعاب' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:geam"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الالعاب ')  
 end,nil)   
-elseif text == 'قفل الالعاب بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الالعاب بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:geam"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الالعاب بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل الالعاب بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الالعاب بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:geam"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الالعاب بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل الالعاب بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الالعاب بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:geam"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الالعاب بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح الالعاب' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح الالjjjjjعاب' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:geam"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الالعاب ')  
 end,nil)   
 end
-if text == 'قفل الاغاني' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليهاب الاغاني' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Audio"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الاغاني ')  
 end,nil)   
-elseif text == 'قفل الاغاني بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الاغاني بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Audio"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الاغاني بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل الاغاني بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الاغاني بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Audio"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الاغاني بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل الاغاني بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الاغاني بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Audio"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الاغاني بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح الاغاني' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح hhhh' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Audio"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الاغاني ')  
 end,nil)   
 end
-if text == 'قفل الصوت' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليهاب الصوت' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:vico"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الصوت ')  
 end,nil)   
-elseif text == 'قفل الصوت بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الصوت بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:vico"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الصوت بالتقييد\n⛔| الحاله ←التقييد')  
 end,nil)   
-elseif text == 'قفل الصوت بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الصوت بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:vico"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الصوت بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل الصوت بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الصوت بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:vico"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الصوت بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح الصوت' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح اhhhhلصوت' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:vico"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الصوت ')  
 end,nil)   
 end
-if text == 'قفل الكيبورد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليهاب الكيبورد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Keyboard"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الكيبورد ')  
 end,nil)   
-elseif text == 'قفل الكيبورد بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الكيبورد بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Keyboard"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الكيبورد بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل الكيبورد بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الكيبورد بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Keyboard"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الكيبورد بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل الكيبورد بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الكيبورد بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Keyboard"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الكيبورد بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح الكيبورد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح اhhhhلكيبورد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Keyboard"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الكيبورد ')  
 end,nil)   
 end
-if text == 'قفل الملصقات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليهاب الملصقات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Sticker"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الملصقات ')  
 end,nil)   
-elseif text == 'قفل الملصقات بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الملصقات بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Sticker"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الملصقات بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل الملصقات بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الملصقات بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Sticker"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الملصقات بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل الملصقات بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الملصقات بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Sticker"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الملصقات بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح الملصقات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح الملggggصقات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Sticker"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الملصقات ')  
 end,nil)   
 end
-if text == 'قفل التوجيه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليهاب التوجيه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:forward"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل التوجيه ')  
 end,nil)   
-elseif text == 'قفل التوجيه بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب التوجيه بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:forward"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل التوجيه بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل التوجيه بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب التوجيه بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:forward"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل التوجيه بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل التوجيه بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب التوجيه بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:forward"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل التوجيه بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح التوجيه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح التوhhhhجيه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:forward"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح التوجيه ')  
 end,nil)   
 end
-if text == 'قفل الملفات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليهاب الملفات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Document"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الملفات ')  
 end,nil)   
-elseif text == 'قفل الملفات بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الملفات بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Document"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الملفات بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل الملفات بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الملفات بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Document"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الملفات بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل الملفات بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الملفات بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Document"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الملفات بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح الملفات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح الhhhhملفات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Document"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الملفات ')  
 end,nil)   
 end
-if text == 'قفل السيلفي' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليهاب السيلفي' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Unsupported"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل السيلفي ')  
 end,nil)   
-elseif text == 'قفل السيلفي بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب السيلفي بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Unsupported"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل السيلفي بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل السيلفي بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب السيلفي بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Unsupported"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل السيلفي بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل السيلفي بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب السيلفي بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Unsupported"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل السيلفي بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح السيلفي' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح اhhhhلسيلفي' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Unsupported"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح السيلفي ')  
 end,nil)   
 end
-if text == 'قفل الماركداون' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفليهاب الماركداون' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Markdaun"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الماركداون ')  
 end,nil)   
-elseif text == 'قفل الماركداون بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفليهاب الماركداون بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Markdaun"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الماركداون بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل الماركداون بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفل الماركداون بالااااكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Markdaun"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الماركداون بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل الماركداون بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفل الماركداون اااابالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Markdaun"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الماركداون بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح الماركداون' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح الماركداااااون' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Markdaun"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الماركداون ')  
 end,nil)   
 end
-if text == 'قفل الجهات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفل الجهاااااات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Contact"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الجهات ')  
 end,nil)   
-elseif text == 'قفل الجهات بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفل الجهات بالتتتتتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Contact"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الجهات بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل الجهات بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفل الجهاتنممم بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Contact"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الجهات بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل الجهات بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفل الجهات بالمنننطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Contact"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الجهات بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح الجهات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح الجتتتتهات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Contact"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الجهات ')  
 end,nil)   
 end
-if text == 'قفل الكلايش' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفل الكلايةوونش' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Spam"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الكلايش ')  
 end,nil)   
-elseif text == 'قفل الكلايش بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفل الكلاياتتتش بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Spam"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الكلايش بالتقييد\n⛔| الحاله ←التقييد ')  
 end,nil)   
-elseif text == 'قفل الكلايش بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفل الكلايش بتتتتالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Spam"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الكلايش بالكتم\n⛔| الحاله ←الكتم ')  
 end,nil)   
-elseif text == 'قفل الكلايش بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفل الكلايش بتتتتالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Spam"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم قفـل الكلايش بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
-elseif text == 'فتح الكلايش' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح الكلايتننننش' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Spam"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'ASTORHBOTS')..') \n🔘| تـم فتح الكلايش ')  
 end,nil)   
 end
-if text == 'قفل التكرار بالطرد' and Mod(msg) then 
+if text == 'قفل التكرار بالطااااترد' and Mod(msg) then 
 database:hset(bot_id.."flooding:settings:"..msg.chat_id_ ,"flood",'kick')  
 send(msg.chat_id_, msg.id_,'🔘| تم قفل التكرار بالطرد\n⛔| الحاله ←الطرد')
-elseif text == 'قفل التكرار' and Mod(msg) then 
+elseif text == 'قفل التتاتكرار' and Mod(msg) then 
 database:hset(bot_id.."flooding:settings:"..msg.chat_id_ ,"flood",'del')  
 send(msg.chat_id_, msg.id_,'🔘| تم قفل التكرار \n⛔| الحاله ←بالمسح')
-elseif text == 'قفل التكرار بالتقييد' and Mod(msg) then 
+elseif text == 'قفل التكرار بالتووووقييد' and Mod(msg) then 
 database:hset(bot_id.."flooding:settings:"..msg.chat_id_ ,"flood",'keed')  
 send(msg.chat_id_, msg.id_,'🔘| تم قفل التكرار بالتقييد\n⛔| الحاله ←التقييد')
-elseif text == 'قفل التكرار بالكتم' and Mod(msg) then 
+elseif text == 'قفل التكرار بالكتووتتم' and Mod(msg) then 
 database:hset(bot_id.."flooding:settings:"..msg.chat_id_ ,"flood",'mute')  
 send(msg.chat_id_, msg.id_,'🔘| تم قفل التكرار بالكتم\n⛔| الحاله ←الكتم')
-elseif text == 'فتح التكرار' and Mod(msg) then 
+elseif text == 'فتح التكراوووةر' and Mod(msg) then 
 database:hdel(bot_id.."flooding:settings:"..msg.chat_id_ ,"flood")  
 send(msg.chat_id_, msg.id_,'🔘| تم فتح التكرار')
 end 
@@ -2966,12 +2965,12 @@ if text == 'تحديث' and SudoBot(msg) then
 dofile('MARCOS.lua')  
 send(msg.chat_id_, msg.id_, '☑️| تم تحديث البوت') 
 end 
-if text == ("مسح قائمه العام") and SudoBot(msg) then
+if text == ("مسح قائمه العتتتتام") and SudoBot(msg) then
 database:del(bot_id..'GBan:User')
 send(msg.chat_id_, msg.id_, '\n🔖| تم مسح قائمه العام')
 return false
 end
-if text == ("قائمه العام") and SudoBot(msg) then
+if text == ("قائمه العتتننام") and SudoBot(msg) then
 local list = database:smembers(bot_id..'GBan:User')
 t = "\n*⚠️| قائمة المحظورين عام \n━━━━━━━━━━━\n*"
 for k,v in pairs(list) do
@@ -2988,7 +2987,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 return false
 end
-if text == ("حظر عام") and msg.reply_to_message_id_ and SudoBot(msg) then
+if text == ("حظر عتتووام") and msg.reply_to_message_id_ and SudoBot(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3019,8 +3018,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^حظر عام @(.*)$")  and SudoBot(msg) then
-local username = text:match("^حظر عام @(.*)$") 
+if text and text:match("^حظر عامنننن @(.*)$")  and SudoBot(msg) then
+local username = text:match("^حظر مككككعام @(.*)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3056,8 +3055,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^حظر عام (%d+)$") and SudoBot(msg) then
-local userid = text:match("^حظر عام (%d+)$")
+if text and text:match("^حظر عمممممام (%d+)$") and SudoBot(msg) then
+local userid = text:match("^حظر ككمثثعام (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3188,7 +3187,7 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end
-if text == ("الغاء العام") and msg.reply_to_message_id_ and SudoBot(msg) then
+if text == ("الغاء الكتم العام") and msg.reply_to_message_id_ and SudoBot(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3204,7 +3203,6 @@ usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.usernam
 status  = '\n🔘| تم الغاء(الحظر-الكتم) عام من القروبات  '
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
-database:srem(bot_id..'GBan:User', result.sender_user_id_)
 database:srem(bot_id..'Gmute:User', result.sender_user_id_)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
@@ -3226,7 +3224,6 @@ if result.id_ then
 usertext = '\n👤|العضو » ['..result.title_..'](t.me/'..(username or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم الغاء حظره عام من المجموعات'
 texts = usertext..status
-database:srem(bot_id..'GBan:User', result.id_)
 database:srem(bot_id..'Gmute:User', result.id_)
 else
 texts = '⚠| لا يوجد حساب بهاذا المعرف'
@@ -3247,7 +3244,6 @@ send(msg.chat_id_, msg.id_,'🔖| لا تستطيع استخدام البوت ي
 end
 return false
 end
-database:srem(bot_id..'GBan:User', userid)
 database:srem(bot_id..'Gmute:User', userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
@@ -3262,11 +3258,11 @@ end;end,nil)
 return false
 end
 ------------------------------------------------------------------------
-if text == ("مسح المطورين") and SudoBot(msg) then
+if text == ("مسح المطتتتورين") and SudoBot(msg) then
 database:del(bot_id..'Sudo:User')
 send(msg.chat_id_, msg.id_, "\n📝|  تم مسح قائمة المطورين  ")
 end
-if text == ("المطورين") and SudoBot(msg) then
+if text == ("المطورننننين") and SudoBot(msg) then
 local list = database:smembers(bot_id..'Sudo:User')
 t = "\n*📮| قائمة مطورين البوت \n●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●\n*"
 for k,v in pairs(list) do
@@ -3373,7 +3369,7 @@ send(msg.chat_id_,msg.id_,"🔖| تم مسح الملفات")
 return false
 end
 
-if text == ("رفع مطور") and msg.reply_to_message_id_ and SudoBot(msg) then
+if text == ("تلا") and msg.reply_to_message_id_ and SudoBot(msg) then
 function start_function(extra, result, success)
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -3394,8 +3390,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false 
 end
-if text and text:match("^رفع مطور @(.*)$") and SudoBot(msg) then
-local username = text:match("^رفع مطور @(.*)$")
+if text and text:match("^تلا @(.*)$") and SudoBot(msg) then
+local username = text:match("^تلا @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3423,8 +3419,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false 
 end
-if text and text:match("^رفع مطور (%d+)$") and SudoBot(msg) then
-local userid = text:match("^رفع مطور (%d+)$")
+if text and text:match("^تلا (%d+)$") and SudoBot(msg) then
+local userid = text:match("^تلا (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3447,7 +3443,7 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false 
 end
-if text == ("تنزيل مطور") and msg.reply_to_message_id_ and SudoBot(msg) then
+if text == ("تلاامزهو") and msg.reply_to_message_id_ and SudoBot(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3468,8 +3464,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false 
 end
-if text and text:match("^تنزيل مطور @(.*)$") and SudoBot(msg) then
-local username = text:match("^تنزيل مطور @(.*)$")
+if text and text:match("^تلاامزهو @(.*)$") and SudoBot(msg) then
+local username = text:match("^تلاامزهو @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3493,8 +3489,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end  
-if text and text:match("^تنزيل مطور (%d+)$") and SudoBot(msg) then
-local userid = text:match("^تنزيل مطور (%d+)$")
+if text and text:match("^تلاامزهو (%d+)$") and SudoBot(msg) then
+local userid = text:match("^تلاامزهو (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3517,15 +3513,15 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false 
 end
-if text == ("مسح قائمه المالك") and Sudo(msg) then
+if text == ("مسح قائمه اللاس") and Sudo(msg) then
 database:del(bot_id..'CoSu'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, '\n 🔷|تم مسح قائمه المالك')
+send(msg.chat_id_, msg.id_, '\n 🔷|تم مسح قائمه اللاس')
 return false
 end
 
-if text == 'قائمه المالك' and Sudo(msg) then
+if text == 'قائمه اللاس' and Sudo(msg) then
 local list = database:smembers(bot_id..'CoSu'..msg.chat_id_)
-t = "\n 🔷| قائمه المالك \n≪━━━━━ÃŜŤÕŘȞ━━━━━≫\n"
+t = "\n 🔷| قائمه اللاس \n≪━━━━━ÃŜŤÕŘȞ━━━━━≫\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -3535,12 +3531,12 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = " 🔷| لا يوجد احد في قائمه المالك"
+t = " 🔷| لا يوجد احد في قائمه اللاس"
 end
 send(msg.chat_id_, msg.id_, t)
 return false
 end
-if text == ("صيح للمالك") or text == ("تاك للمالك") then
+if text == ("صيح لللاس") or text == ("تاك لللاس") then
 local list = database:smembers(bot_id..'CoSu'..msg.chat_id_)
 t = "\n 🔷| وينكم تعالو يريدوكم بكروب \n≪━━━━━ÃŜŤÕŘȞ━━━━━≫\n"
 for k,v in pairs(list) do
@@ -3552,12 +3548,12 @@ t = t..""..k.."- {"..v.."}\n"
 end
 end
 if #list == 0 then
-t = " 🔷| لا يوجد احد في قائمه المالك"
+t = " 🔷| لا يوجد احد في قائمه اللاس"
 end
 send(msg.chat_id_, msg.id_, t)
 end
 
-if text == ("رفع مالك") and msg.reply_to_message_id_ and Sudo(msg) then
+if text == ("تلااتتتمزهو") and msg.reply_to_message_id_ and Sudo(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3571,15 +3567,15 @@ function start_function(extra, result, success)
 database:sadd(bot_id..'CoSu'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n 🔷| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'pvv_v')..')'
-status  = '\n 🔷| تم ترقيته مالك'
+status  = '\n 🔷| تم ترقيته لاس'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^رفع مالك @(.*)$") and Sudo(msg) then
-local username = text:match("^رفع مالك @(.*)$")
+if text and text:match("^تلااتتتمزهو @(.*)$") and Sudo(msg) then
+local username = text:match("^تلااتتتمزهو @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3597,7 +3593,7 @@ return false
 end      
 database:sadd(bot_id..'CoSu'..msg.chat_id_, result.id_)
 usertext = '\n 🔷| العضو » ['..result.title_..'](t.me/'..(username or 'pvv_v')..')'
-status  = '\n 🔷| تم ترقيته مالك'
+status  = '\n 🔷| تم ترقيته لاس'
 texts = usertext..status
 else
 texts = ' 🔷| لا يوجد حساب بهاذا المعرف'
@@ -3607,8 +3603,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^رفع مالك (%d+)$") and Sudo(msg) then
-local userid = text:match("^رفع مالك (%d+)$") 
+if text and text:match("^تلااتتتمزهو (%d+)$") and Sudo(msg) then
+local userid = text:match("^تلااتتتمزهو (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3622,16 +3618,16 @@ database:sadd(bot_id..'CoSu'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n 🔷| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'pvv_v')..')'
-status  = '\n 🔷| تم ترقيته مالك'
+status  = '\n 🔷| تم ترقيته لاس'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
 usertext = '\n 🔷| العضو » '..userid..''
-status  = '\n 🔷| تم ترقيته مالك'
+status  = '\n 🔷| تم ترقيته لاس'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end
-if text == ("تنزيل مالك") and msg.reply_to_message_id_ and Sudo(msg) then
+if text == ("تنزيل لاس") and msg.reply_to_message_id_ and Sudo(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3645,15 +3641,15 @@ function start_function(extra, result, success)
 database:srem(bot_id..'CoSu'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n 🔷| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'pvv_v')..')'
-status  = '\n 🔷| تم تنزيله من المالكين'
+status  = '\n 🔷| تم تنزيله من اللاسين'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل مالك @(.*)$") and Sudo(msg) then
-local username = text:match("^تنزيل مالك @(.*)$")
+if text and text:match("^تنزيل لاس @(.*)$") and Sudo(msg) then
+local username = text:match("^تنزيل لاس @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3667,7 +3663,7 @@ function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'CoSu'..msg.chat_id_, result.id_)
 usertext = '\n 🔷| العضو » ['..result.title_..'](t.me/'..(username or 'pvv_v')..')'
-status  = '\n 🔷| تم تنزيله من المالكين'
+status  = '\n 🔷| تم تنزيله من اللاسين'
 texts = usertext..status
 else
 texts = ' 🔷| لا يوجد حساب بهاذا المعرف'
@@ -3677,8 +3673,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل مالك (%d+)$") and Sudo(msg) then
-local userid = text:match("^تنزيل مالك (%d+)$") 
+if text and text:match("^تنزيل لاس (%d+)$") and Sudo(msg) then
+local userid = text:match("^تنزيل لاس (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3692,24 +3688,24 @@ database:srem(bot_id..'CoSu'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n 🔷| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'pvv_v')..')'
-status  = '\n 🔷| تم تنزيله من المالكين'
+status  = '\n 🔷| تم تنزيله من اللاسين'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
 usertext = '\n 🔷| العضو » '..userid..''
-status  = '\n 🔷| تم تنزيله من المالكين'
+status  = '\n 🔷| تم تنزيله من اللاسين'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
-if text == ("مسح الاساسيين") and CoSu(msg) then
+if text == ("مسح الاساسييتتتتتتن") and CoSu(msg) then
 database:del(bot_id..'Basic:Constructor'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, '\n☑| تم مسح قائمه المنشئين الاساسين')
 return false
 end
 
-if text == 'المنشئين الاساسيين' and CoSu(msg) then
+if text == 'المنشئين الاساااااااسيين' and CoSu(msg) then
 local list = database:smembers(bot_id..'Basic:Constructor'..msg.chat_id_)
 t = "\n📮| قائمة المنشئين الاساسين \n●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●\n"
 for k,v in pairs(list) do
@@ -3727,7 +3723,7 @@ send(msg.chat_id_, msg.id_, t)
 return false
 end
 
-if text == ("رفع منشئ اساسي") and msg.reply_to_message_id_ and CoSu(msg) then
+if text == ("تلااتتمزهو") and msg.reply_to_message_id_ and CoSu(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3748,8 +3744,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^رفع منشئ اساسي @(.*)$") and CoSu(msg) then
-local username = text:match("^رفع منشئ اساسي @(.*)$")
+if text and text:match("^تلااتتمزهو @(.*)$") and CoSu(msg) then
+local username = text:match("^تلااتتمزهو @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3777,8 +3773,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^رفع منشئ اساسي (%d+)$") and CoSu(msg) then
-local userid = text:match("^رفع منشئ اساسي (%d+)$") 
+if text and text:match("^تلااتتمزهو (%d+)$") and CoSu(msg) then
+local userid = text:match("^تلااتتمزهو (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3801,7 +3797,7 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end
-if text == ("تنزيل منشئ اساسي") and msg.reply_to_message_id_ and CoSu(msg) then
+if text == ("تلاامزهو") and msg.reply_to_message_id_ and CoSu(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3822,8 +3818,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي @(.*)$") and CoSu(msg) then
-local username = text:match("^تنزيل منشئ اساسي @(.*)$")
+if text and text:match("^تلاامزهو @(.*)$") and CoSu(msg) then
+local username = text:match("^تلاامزهو @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3847,8 +3843,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي (%d+)$") and CoSu(msg) then
-local userid = text:match("^تنزيل منشئ اساسي (%d+)$") 
+if text and text:match("^تلاامزهو (%d+)$") and CoSu(msg) then
+local userid = text:match("^تلاامزهو (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3872,13 +3868,13 @@ end;end,nil)
 return false
 end
 ------------------------------------------------------------------------
-if text == 'مسح المنشئين' and BasicConstructor(msg) then
+if text == 'مسااتتننح المنشئين' and BasicConstructor(msg) then
 database:del(bot_id..'Constructor'..msg.chat_id_)
 texts = '✖| تم مسح المنشئين '
 send(msg.chat_id_, msg.id_, texts)
 end
 
-if text == ("المنشئين") and BasicConstructor(msg) then
+if text == ("المنشاالاروئين") and BasicConstructor(msg) then
 local list = database:smembers(bot_id..'Constructor'..msg.chat_id_)
 t = "\n📮| قائمة المنشئين \n●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●\n"
 for k,v in pairs(list) do
@@ -3894,7 +3890,7 @@ t = "✖| لا يوجد منشئين"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text ==("المنشئ") then
+if text ==("المنالنوشئ") then
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
 local admins = data.members_
 for i=0 , #admins do
@@ -3912,7 +3908,7 @@ end
 end
 end,nil)   
 end
-if text == "رفع منشئ" and msg.reply_to_message_id_ and BasicConstructor(msg) then
+if text == "تلااتتمزهو" and msg.reply_to_message_id_ and BasicConstructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3932,8 +3928,8 @@ end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 end
-if text and text:match("^رفع منشئ @(.*)$") and BasicConstructor(msg) then
-local username = text:match("^رفع منشئ @(.*)$")
+if text and text:match("^تلااتتمزهو @(.*)$") and BasicConstructor(msg) then
+local username = text:match("^تلااتتمزهو @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3961,8 +3957,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 end
 ------------------------------------------------------------------------
-if text and text:match("^رفع منشئ (%d+)$") and BasicConstructor(msg) then
-local userid = text:match("^رفع منشئ (%d+)$")
+if text and text:match("^تلااتتمزهو (%d+)$") and BasicConstructor(msg) then
+local userid = text:match("^تلااتتمزهو (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3984,7 +3980,7 @@ status  = '\n🔘| تم ترقيته منشئ'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 end
-if text and text:match("^تنزيل منشئ$") and msg.reply_to_message_id_ and BasicConstructor(msg) then
+if text and text:match("^تلااتتمزهو$") and msg.reply_to_message_id_ and BasicConstructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4005,8 +4001,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 end
 ------------------------------------------------------------------------
-if text and text:match("^تنزيل منشئ @(.*)$") and BasicConstructor(msg) then
-local username = text:match("^تنزيل منشئ @(.*)$")
+if text and text:match("^تلااتتمزهو @(.*)$") and BasicConstructor(msg) then
+local username = text:match("^تلااتتمزهو @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4030,8 +4026,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 end
 ------------------------------------------------------------------------
-if text and text:match("^تنزيل منشئ (%d+)$") and BasicConstructor(msg) then
-local userid = text:match("^تنزيل منشئ (%d+)$")
+if text and text:match("^تلااتتمزهو (%d+)$") and BasicConstructor(msg) then
+local userid = text:match("^تلااتتمزهو (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4054,12 +4050,12 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 end
 ------------------------------------------------------------------------
-if text == 'مسح المدراء' and Constructor(msg) then
+if text == 'مسح التتتتتمدراء' and Constructor(msg) then
 database:del(bot_id..'Manager'..msg.chat_id_)
 texts = '✖|  تم مسح المدراء '
 send(msg.chat_id_, msg.id_, texts)
 end
-if text == ("المدراء") and Constructor(msg) then
+if text == ("المدرتتتتتاء") and Constructor(msg) then
 local list = database:smembers(bot_id..'Manager'..msg.chat_id_)
 t = "\n📮| قائمة المدراء \n●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●\n"
 for k,v in pairs(list) do
@@ -4075,7 +4071,7 @@ t = "✖| لا يوجد مدراء"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == ("رفع مدير") and msg.reply_to_message_id_ and Constructor(msg) then
+if text == ("تلااتتمزهو") and msg.reply_to_message_id_ and Constructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4096,8 +4092,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end  
-if text and text:match("^رفع مدير @(.*)$") and Constructor(msg) then
-local username = text:match("^رفع مدير @(.*)$") 
+if text and text:match("^تلااتتمزهو @(.*)$") and Constructor(msg) then
+local username = text:match("^تلااتتمزهو @(.*)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4126,8 +4122,8 @@ tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, 
 return false
 end 
 
-if text and text:match("^رفع مدير (%d+)$") and Constructor(msg) then
-local userid = text:match("^رفع مدير (%d+)$") 
+if text and text:match("^تلااتتمزهو (%d+)$") and Constructor(msg) then
+local userid = text:match("^تلااتتمزهو (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4150,7 +4146,7 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end  
-if text == ("تنزيل مدير") and msg.reply_to_message_id_ and Constructor(msg) then
+if text == ("تلااتتمزهو") and msg.reply_to_message_id_ and Constructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4171,8 +4167,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end  
-if text and text:match("^تنزيل مدير @(.*)$") and Constructor(msg) then
-local username = text:match("^تنزيل مدير @(.*)$")
+if text and text:match("^تلااتتمزهو @(.*)$") and Constructor(msg) then
+local username = text:match("^تلااتتمزهو @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4196,8 +4192,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end  
-if text and text:match("^تنزيل مدير (%d+)$") and Constructor(msg) then
-local userid = text:match("^تنزيل مدير (%d+)$") 
+if text and text:match("^تلااتتمزهو (%d+)$") and Constructor(msg) then
+local userid = text:match("^تلااتتمزهو (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4221,7 +4217,7 @@ end;end,nil)
 return false
 end
 ------------------------------------------------------------------------
-if text ==("رفع الادمنيه") and Manager(msg) then
+if text ==("رفع الااادمنيه") and Manager(msg) then
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
 local num2 = 0
 local admins = data.members_
@@ -4247,7 +4243,7 @@ send(msg.chat_id_, msg.id_,"📌| تمت ترقية { "..num2.." } من ادمن
 end
 end,nil)   
 end
-if text == 'مسح الادمنيه' and Manager(msg) then
+if text == 'مسح ااالادمنيه' and Manager(msg) then
 database:del(bot_id..'Mod:User'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, '🗑|  تم مسح  قائمة الادمنية  ')
 end
@@ -4267,7 +4263,7 @@ t = "✖| لا يوجد ادمنيه"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == ("تاك لادمنيه") then
+if text == ("تاك لادماانيه") then
 local list = database:smembers(bot_id..'Mod:User'..msg.chat_id_)
 t = "\n📮| قائمة الادمنيه \n●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●\n"
 for k,v in pairs(list) do
@@ -4283,7 +4279,7 @@ t = "✖| لا يوجد ادمنيه"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == ("رفع ادمن") and msg.reply_to_message_id_ and Manager(msg) then
+if text == ("رفع اداااامن") and msg.reply_to_message_id_ and Manager(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4308,8 +4304,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^رفع ادمن @(.*)$") and Manager(msg) then
-local username = text:match("^رفع ادمن @(.*)$")
+if text and text:match("^رفع ادمتتتتتن @(.*)$") and Manager(msg) then
+local username = text:match("^رفع ادمااااان @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4341,8 +4337,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^رفع ادمن (%d+)$") and Manager(msg) then
-local userid = text:match("^رفع ادمن (%d+)$")
+if text and text:match("^رفع تتتتتادمن (%d+)$") and Manager(msg) then
+local userid = text:match("^رفع اتتتتنندمن (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4369,7 +4365,7 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end
-if text == ("تنزيل ادمن") and msg.reply_to_message_id_ and Manager(msg) then
+if text == ("تنزيل ادتاانمن") and msg.reply_to_message_id_ and Manager(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4390,8 +4386,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل ادمن @(.*)$") and Manager(msg) then
-local username = text:match("^تنزيل ادمن @(.*)$") 
+if text and text:match("^تنزيل ادمنتتتتن @(.*)$") and Manager(msg) then
+local username = text:match("^تنزيل تننننادمن @(.*)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4415,8 +4411,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل ادمن (%d+)$") and Manager(msg) then
-local userid = text:match("^تنزيل ادمن (%d+)$")
+if text and text:match("^تنزيل ادتتتتتمن (%d+)$") and Manager(msg) then
+local userid = text:match("^تنزيلننننن ادمن (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4440,7 +4436,7 @@ end;end,nil)
 return false
 end
 ------------------------------------------------------------------------
-if text == ("طرد") and msg.reply_to_message_id_ ~=0 and Mod(msg) then
+if text == ("طتنمرد") and msg.reply_to_message_id_ ~=0 and Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4483,8 +4479,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end  
-if text and text:match("^طرد @(.*)$") and Mod(msg) then 
-local username = text:match("^طرد @(.*)$")
+if text and text:match("^طرتتنند @(.*)$") and Mod(msg) then 
+local username = text:match("^طمممكرد @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4583,11 +4579,11 @@ return false
 end
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
-if text == 'مسح المميزين' and Mod(msg) then
+if text == 'مسح الممااانةنيزين' and Mod(msg) then
 database:del(bot_id..'Special:User'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, '*🗑|  تم مسح  قائمة الاعضاء المميزين  *')
 end
-if text == ("المميزين") and Mod(msg) then
+if text == ("المميمكككزين") and Mod(msg) then
 local list = database:smembers(bot_id..'Special:User'..msg.chat_id_)
 t = "\n*📮| قائمة مميزين المجموعه \n●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●\n*"
 for k,v in pairs(list) do
@@ -4603,7 +4599,7 @@ t = "*✖| لا يوجد مميزين*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == ("رفع مميز") and tonumber(msg.reply_to_message_id_) ~= 0 and Mod(msg) then
+if text == ("رفع نمممكمميز") and tonumber(msg.reply_to_message_id_) ~= 0 and Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4628,8 +4624,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^رفع مميز @(.*)$") and Mod(msg) then
-local username = text:match("^رفع مميز @(.*)$") 
+if text and text:match("^رفع ممنمممميز @(.*)$") and Mod(msg) then
+local username = text:match("^رفع ممكنجميز @(.*)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4662,8 +4658,8 @@ tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, 
 return false
 end
 
-if text and text:match("^رفع مميز (%d+)$") and Mod(msg) then
-local userid = text:match("^رفع مميز (%d+)$")
+if text and text:match("^رفع ممخخمممميز (%d+)$") and Mod(msg) then
+local userid = text:match("^رفع معاتووميز (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4691,7 +4687,7 @@ end;end,nil)
 return false
 end
 
-if (text == ("تنزيل مميز")) and msg.reply_to_message_id_ and Mod(msg) then
+if (text == ("تنزيل ممههتويز")) and msg.reply_to_message_id_ and Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4712,8 +4708,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل مميز @(.*)$") and Mod(msg) then
-local username = text:match("^تنزيل مميز @(.*)$") 
+if text and text:match("^تنزيلنمممم مميز @(.*)$") and Mod(msg) then
+local username = text:match("^تنزيل ممنننمميز @(.*)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4737,8 +4733,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل مميز (%d+)$") and Mod(msg) then
-local userid = text:match("^تنزيل مميز (%d+)$") 
+if text and text:match("^تنزيل ممخنةنيز (%d+)$") and Mod(msg) then
+local userid = text:match("^تنزيل مممننتوميز (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -5514,7 +5510,7 @@ function start_function(extra, result, success)
 database:srem(bot_id..'Zahf:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
-status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم تنزيل العضو زاحف\n هاك حبي هاذا رقم مالك*'
+status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم تنزيل العضو زاحف\n هاك حبي هاذا رقم لاس*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -5591,11 +5587,11 @@ tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumbe
 return false
 end
 ---------------------------------------------
-if text == 'مسح المحظورين' and Mod(msg) then
+if text == 'مسح المحظورييييقن' and Mod(msg) then
 database:del(bot_id..'Ban:User'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, '\n🚷| تم مسح المحظورين')
 end
-if text == ("المحظورين") then
+if text == ("المحظوييييرين") then
 local list = database:smembers(bot_id..'Ban:User'..msg.chat_id_)
 t = "\n*📮| قائمة محظورين المجموعه \n●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●\n*"
 for k,v in pairs(list) do
@@ -5611,7 +5607,7 @@ t = "*✖| لا يوجد محظورين*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == ("حظر") and msg.reply_to_message_id_ ~= 0 and Mod(msg) then
+if text == ("حتتتتظر") and msg.reply_to_message_id_ ~= 0 and Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -5656,8 +5652,8 @@ tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumbe
 return false
 end
 
-if text and text:match("^حظر @(.*)$") and Mod(msg) then
-local username = text:match("^حظر @(.*)$")
+if text and text:match("^حظتتتتر @(.*)$") and Mod(msg) then
+local username = text:match("^حظتتتتتر @(.*)$")
 if database:get(bot_id..'Lock:kick'..msg.chat_id_) and not Constructor(msg) then
 send(msg.chat_id_, msg.id_,'🎗️|  تم تعطيل الحظر من قبل المنشئين') 
 return false
@@ -5696,8 +5692,8 @@ tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, 
 return false
 end
 
-if text and text:match("^حظر (%d+)$") and Mod(msg) then
-local userid = text:match("^حظر (%d+)$") 
+if text and text:match("^حنةةننظر (%d+)$") and Mod(msg) then
+local userid = text:match("^حتتتتنظر (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -5743,7 +5739,7 @@ end,nil)
 end
 return false
 end
-if text == ("الغاء حظر") and msg.reply_to_message_id_ and Mod(msg) then
+if text == ("الغاء تتتتتةحظر") and msg.reply_to_message_id_ and Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -5770,8 +5766,8 @@ tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumbe
 return false
 end
  
-if text and text:match("^الغاء حظر @(.*)$") and Mod(msg) then
-local username = text:match("^الغاء حظر @(.*)$") 
+if text and text:match("^الغاء اااااحظر @(.*)$") and Mod(msg) then
+local username = text:match("^الغاءاتتتت حظر @(.*)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -5801,8 +5797,8 @@ tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, 
 return false
 end
 
-if text and text:match("^الغاء حظر (%d+)$") and Mod(msg) then
-local userid = text:match("^الغاء حظر (%d+)$") 
+if text and text:match("^الغااااااء حظر (%d+)$") and Mod(msg) then
+local userid = text:match("^تتتتتالغاء حظر (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -5831,11 +5827,11 @@ end;end,nil)
 return false
 end
 ------------------------------------------------------------------------
-if text == 'مسح المكتومين' and Mod(msg) then
+if text == 'مسح المكتتتتوواومين' and Mod(msg) then
 database:del(bot_id..'Muted:User'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, '*🗑¦  تم مسح قائمه المكتومين *')
 end
-if text == ("المكتومين") and Mod(msg) then
+if text == ("المكتارتوةومين") and Mod(msg) then
 local list = database:smembers(bot_id..'Muted:User'..msg.chat_id_)
 t = "\n*🔘| قائمة المكتومين \n●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●\n*"
 for k,v in pairs(list) do
@@ -5852,7 +5848,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 end
 
-if text == ("كتم") and msg.reply_to_message_id_ ~= 0 and Mod(msg) then
+if text == ("كممةةتم") and msg.reply_to_message_id_ ~= 0 and Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -5885,8 +5881,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^كتم @(.*)$") and Mod(msg) then
-local username = text:match("^كتم @(.*)$")
+if text and text:match("^كتتتتتنم @(.*)$") and Mod(msg) then
+local username = text:match("^كتنننتننم @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -5926,8 +5922,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match('^كتم (%d+) (.*)$') and tonumber(msg.reply_to_message_id_) ~= 0 and Mod(msg) then
-local TextEnd = {string.match(text, "^(كتم) (%d+) (.*)$")}
+if text and text:match('^كتتننننم (%d+) (.*)$') and tonumber(msg.reply_to_message_id_) ~= 0 and Mod(msg) then
+local TextEnd = {string.match(text, "^(كتتتتتم) (%d+) (.*)$")}
 function start_function(extra, result, success)
 if TextEnd[3] == 'يوم' then
 Time_Restrict = TextEnd[2]:match('(%d+)')
@@ -5960,8 +5956,8 @@ return false
 end
 
 
-if text and text:match('^كتم (%d+) (.*) @(.*)$') and Mod(msg) then
-local TextEnd = {string.match(text, "^(كتم) (%d+) (.*) @(.*)$")}
+if text and text:match('^كتتتتتم (%d+) (.*) @(.*)$') and Mod(msg) then
+local TextEnd = {string.match(text, "^(كتتتتتم) (%d+) (.*) @(.*)$")}
 function start_function(extra, result, success)
 if result.id_ then
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
@@ -5997,8 +5993,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = TextEnd[4]}, start_function, nil)
 return false
 end
-if text and text:match("^كتم (%d+)$") and Mod(msg) then
-local userid = text:match("^كتم (%d+)$")
+if text and text:match("^كتنتننم (%d+)$") and Mod(msg) then
+local userid = text:match("^كتمممممم (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6033,7 +6029,7 @@ end;end,nil)
 end
 return false
 end
-if text == ("الغاء كتم") and msg.reply_to_message_id_ and Mod(msg) then
+if text == ("الغاءتتتتنن كتم") and msg.reply_to_message_id_ and Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6054,8 +6050,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^الغاء كتم @(.*)$") and Mod(msg) then
-local username = text:match("^الغاء كتم @(.*)$")
+if text and text:match("^الغاء تتتنننكتم @(.*)$") and Mod(msg) then
+local username = text:match("^الغانننننء كتم @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6080,8 +6076,8 @@ tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, 
 return false
 end
 
-if text and text:match("^الغاء كتم (%d+)$") and Mod(msg) then
-local userid = text:match("^الغاء كتم (%d+)$") 
+if text and text:match("^الغاتتنننء كتم (%d+)$") and Mod(msg) then
+local userid = text:match("^الغاء نننننكتم (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6105,7 +6101,7 @@ end;end,nil)
 return false
 end
 
-if text == ("تقييد") and msg.reply_to_message_id_ and Mod(msg) then
+if text == ("تقييتتتتتد") and msg.reply_to_message_id_ and Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6135,8 +6131,8 @@ tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumbe
 return false
 end
 ------------------------------------------------------------------------
-if text and text:match("^تقييد @(.*)$") and Mod(msg) then
-local username = text:match("^تقييد @(.*)$")
+if text and text:match("^تقييتتتتتتد @(.*)$") and Mod(msg) then
+local username = text:match("^تقيننخنننيد @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6174,8 +6170,8 @@ tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, 
 return false
 end
 
-if text and text:match('^تقييد (%d+) (.*)$') and tonumber(msg.reply_to_message_id_) ~= 0 and Mod(msg) then
-local TextEnd = {string.match(text, "^(تقييد) (%d+) (.*)$")}
+if text and text:match('^تقيتتنننيد (%d+) (.*)$') and tonumber(msg.reply_to_message_id_) ~= 0 and Mod(msg) then
+local TextEnd = {string.match(text, "^(تنننننقييد) (%d+) (.*)$")}
 function start_function(extra, result, success)
 if TextEnd[3] == 'يوم' then
 Time_Restrict = TextEnd[2]:match('(%d+)')
@@ -6208,8 +6204,8 @@ return false
 end
 
 
-if text and text:match('^تقييد (%d+) (.*) @(.*)$') and Mod(msg) then
-local TextEnd = {string.match(text, "^(تقييد) (%d+) (.*) @(.*)$")}
+if text and text:match('^تقننمممييد (%d+) (.*) @(.*)$') and Mod(msg) then
+local TextEnd = {string.match(text, "^(تقينننننميد) (%d+) (.*) @(.*)$")}
 function start_function(extra, result, success)
 if result.id_ then
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
@@ -6246,8 +6242,8 @@ tdcli_function ({ID = "SearchPublicChat",username_ = TextEnd[4]}, start_function
 return false
 end
 ------------------------------------------------------------------------
-if text and text:match("^تقييد (%d+)$") and Mod(msg) then
-local userid = text:match("^تقييد (%d+)$")
+if text and text:match("^تقيجكجكككيد (%d+)$") and Mod(msg) then
+local userid = text:match("^تقيننمممميد (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6279,7 +6275,7 @@ end
 return false
 end
 ------------------------------------------------------------------------
-if text == ("الغاء تقييد") and msg.reply_to_message_id_ and Mod(msg) then
+if text == ("الغاء تتتنممقييد") and msg.reply_to_message_id_ and Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6301,8 +6297,8 @@ tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumbe
 return false
 end
 ------------------------------------------------------------------------
-if text and text:match("^الغاء تقييد @(.*)$") and Mod(msg) then
-local username = text:match("^الغاء تقييد @(.*)$")
+if text and text:match("^الغاء تتممننقييد @(.*)$") and Mod(msg) then
+local username = text:match("^الغاء تمممةةقييد @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6327,8 +6323,8 @@ tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, 
 return false
 end
 ------------------------------------------------------------------------
-if text and text:match("^الغاء تقييد (%d+)$") and Mod(msg) then
-local userid = text:match("^الغاء تقييد (%d+)$")
+if text and text:match("^الغاء نممممتقييد (%d+)$") and Mod(msg) then
+local userid = text:match("^الغاء تككةورتقييد (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6351,8 +6347,8 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end
-if text and text:match('^رفع القيود @(.*)') and Manager(msg) then 
-local username = text:match('^رفع القيود @(.*)') 
+if text and text:match('^رفع النموومقيود @(.*)') and Manager(msg) then 
+local username = text:match('^رفع الثثوتتقيود @(.*)') 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6388,7 +6384,7 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 end
-if text == "رفع القيود" and Manager(msg) then
+if text == "رفع اتتنمملقيود" and Manager(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6421,8 +6417,8 @@ end
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 end
-if text and text:match('^كشف القيود @(.*)') and Manager(msg) then 
-local username = text:match('^كشف القيود @(.*)') 
+if text and text:match('^كشف القتممميود @(.*)') and Manager(msg) then 
+local username = text:match('^كشف المةوتنقيود @(.*)') 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6464,7 +6460,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 end
 
-if text == "كشف القيود" and Manager(msg) then 
+if text == "كشنممممف القيود" and Manager(msg) then 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6662,7 +6658,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text == 'اعدادات المجموعه' and Mod(msg) then    
+if text == 'اعدادات المجماخةونوعه' and Mod(msg) then    
 if database:get(bot_id..'lockpin'..msg.chat_id_) then    
 lock_pin = '✓'
 else 
@@ -7019,7 +7015,7 @@ local text =
 ' }\n'..'📮| الحظر ← { '..banm..' }\n\n┉  ┉  ┉  ┉ ┉  ┉  ┉  ┉  ┉  ┉\n🔖| CH » [Channel ALASTORH](https://t.me/ASTORHBOTS)\n'
 send(msg.chat_id_, msg.id_,text)     
 end    
-if text ==('تثبيت') and msg.reply_to_message_id_ ~= 0 and Mod(msg) then  
+if text ==('تثبمةنحيت') and msg.reply_to_message_id_ ~= 0 and Mod(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7046,7 +7042,7 @@ send(msg.chat_id_,msg.id_,"📫| ليست لدي صلاحية التثبيت ي�
 end
 end,nil) 
 end
-if text == 'الغاء التثبيت' and Mod(msg) then  
+if text == 'الغاء التنننووتثبيت' and Mod(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7073,7 +7069,7 @@ send(msg.chat_id_,msg.id_,"💠| ليست لدي صلاحية التثبيت ي�
 end
 end,nil)
 end
-if text == 'الغاء تثبيت الكل' and Mod(msg) then  
+if text == 'الغاء تثبيرننةوت الكل' and Mod(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7101,17 +7097,17 @@ send(msg.chat_id_,msg.id_,"⚠️| ليست لدي صلاحية التثبيت �
 end
 end,nil)
 end
-if text and text:match('^ضع تكرار (%d+)$') and Mod(msg) then   
-local Num = text:match('ضع تكرار (.*)')
+if text and text:match('^ضع تكنننممرار (%d+)$') and Mod(msg) then   
+local Num = text:match('ضع تمممممكرار (.*)')
 database:hset(bot_id.."flooding:settings:"..msg.chat_id_ ,"floodmax" ,Num) 
 send(msg.chat_id_, msg.id_,'🔖| تم وضع عدد التكرار ('..Num..')')  
 end 
-if text and text:match('^ضع زمن التكرار (%d+)$') and Mod(msg) then   
-local Num = text:match('^ضع زمن التكرار (%d+)$')
+if text and text:match('^ضع زمنونخووو التكرار (%d+)$') and Mod(msg) then   
+local Num = text:match('^ضع زمن ووتتتالتكرار (%d+)$')
 database:hset(bot_id.."flooding:settings:"..msg.chat_id_ ,"floodtime" ,Num) 
 send(msg.chat_id_, msg.id_,'📮| تم وضع زمن التكرار ('..Num..')') 
 end
-if text == "ضع رابط" or text == 'وضع رابط' then
+if text == "ضع رابمنةننط" or text == 'وضعنممم رابط' then
 if msg.reply_to_message_id_ == 0  and Mod(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -7127,14 +7123,14 @@ database:setex(bot_id.."Set:Priovate:Group:Link"..msg.chat_id_..""..msg.sender_u
 return false
 end
 end
-if text == "تفعيل رابط" or text == 'تفعيل الرابط' then
+if text == "تفعيل رالاااتتبط" or text == 'تفعيل الرنممممابط' then
 if Mod(msg) then  
 database:set(bot_id.."Link_Group:status"..msg.chat_id_,true) 
 send(msg.chat_id_, msg.id_,"📌| تم تفعيل الرابط") 
 return false  
 end
 end
-if text == "تعطيل رابط" or text == 'تعطيل الرابط' then
+if text == "تعطيل راتنننابط" or text == 'تعطيل امممممملرابط' then
 if Mod(msg) then  
 database:del(bot_id.."Link_Group:status"..msg.chat_id_) 
 send(msg.chat_id_, msg.id_,"📌| تم تعطيل الرابط") 
@@ -7153,7 +7149,7 @@ database:del(bot_id.."my_photo:status"..msg.chat_id_)
 send(msg.chat_id_, msg.id_,"📌┇ تم تعطيل الصوره") 
 return false end
 end
-if text == "الرابط" then 
+if text == "الرتننننمابط" then 
 local status_Link = database:get(bot_id.."Link_Group:status"..msg.chat_id_)
 if not status_Link then
 send(msg.chat_id_, msg.id_,"⚠️| الرابط معطل") 
@@ -7173,7 +7169,7 @@ end
 send(msg.chat_id_, msg.id_,linkgp)              
 end            
 end
-if text == 'مسح الرابط' or text == 'حذف الرابط' then
+if text == 'مسح الممممرابط' or text == 'حذف الراوتنححبط' then
 if Mod(msg) then     
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -7189,12 +7185,12 @@ database:del(bot_id.."Private:Group:Link"..msg.chat_id_)
 return false      
 end
 end
-if text and text:match("^ضع صوره") and Mod(msg) and msg.reply_to_message_id_ == 0 then  
+if text and text:match("^ضع وخنممصوره") and Mod(msg) and msg.reply_to_message_id_ == 0 then  
 database:set(bot_id..'Change:Chat:Photo'..msg.chat_id_..':'..msg.sender_user_id_,true) 
 send(msg.chat_id_, msg.id_,'🎇| ارسل لي الصوره') 
 return false
 end
-if text == "حذف الصوره" or text == "مسح الصوره" then 
+if text == "حذف التتننمصوره" or text == "مسح الصوونننوره" then 
 if Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -7210,14 +7206,14 @@ send(msg.chat_id_, msg.id_,'📌| تم ازالة صورة المجموعه')
 end
 return false  
 end
-if text == 'ضع وصف' or text == 'وضع وصف' then  
+if text == 'ضع وةننننصف' or text == 'وضعونخنم وصف' then  
 if Mod(msg) then
 database:setex(bot_id.."Set:Description" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 120, true)  
 send(msg.chat_id_, msg.id_,'📥| ارسل الان الوصف')
 end
 return false  
 end
-if text == 'ضع ترحيب' or text == 'وضع ترحيب' then  
+if text == 'ضع ترحةتااتيب' or text == 'وضع ترةنمحححيب' then  
 if Mod(msg) then
 database:setex(bot_id.."Welcome:Group" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 120, true)  
 t  = '🔖| ارسل لي الترحيب الان'
@@ -7226,7 +7222,7 @@ send(msg.chat_id_, msg.id_,t..tt)
 end
 return false  
 end
-if text == 'الترحيب' and Mod(msg) then 
+if text == 'التروتخنممححيب' and Mod(msg) then 
 local GetWelcomeGroup = database:get(bot_id..'Get:Welcome:Group'..msg.chat_id_)  
 if GetWelcomeGroup then 
 GetWelcome = GetWelcomeGroup
@@ -7236,7 +7232,7 @@ end
 send(msg.chat_id_, msg.id_,'['..GetWelcome..']') 
 return false  
 end
-if text == 'تفعيل الترحيب' and Mod(msg) then  
+if text == 'تفعيل التروننممحيب' and Mod(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7250,7 +7246,7 @@ database:set(bot_id..'Chek:Welcome'..msg.chat_id_,true)
 send(msg.chat_id_, msg.id_,'📮| تم تفعيل ترحيب المجموعه') 
 return false  
 end
-if text == 'تعطيل الترحيب' and Mod(msg) then  
+if text == 'تعطيل الترحوتنممميب' and Mod(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7264,13 +7260,13 @@ database:del(bot_id..'Chek:Welcome'..msg.chat_id_)
 send(msg.chat_id_, msg.id_,'📮| تم تعطيل ترحيب المجموعه') 
 return false  
 end
-if text == 'مسح الترحيب' or text == 'حذف الترحيب' then 
+if text == 'مسح الترورتنممحيب' or text == 'حذف اونحمتتلترحيب' then 
 if Mod(msg) then
 database:del(bot_id..'Get:Welcome:Group'..msg.chat_id_) 
 send(msg.chat_id_, msg.id_,'💠| تم ازالة ترحيب المجموعه') 
 end
 
-if text == "مسح قائمه المنع" and Manager(msg) then   
+if text == "مسح قائمه اةنممملمنع" and Manager(msg) then   
 local list = database:smembers(bot_id.."List:Filter"..msg.chat_id_)  
 for k,v in pairs(list) do  
 database:del(bot_id.."Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
@@ -7279,7 +7275,7 @@ database:srem(bot_id.."List:Filter"..msg.chat_id_,v)
 end  
 send(msg.chat_id_, msg.id_,"🖇️| تم مسح قائمه المنع")  
 end
-if text == "قائمه المنع" and Manager(msg) then   
+if text == "قائمه وتخمثالمنع" and Manager(msg) then   
 local list = database:smembers(bot_id.."List:Filter"..msg.chat_id_)  
 t = "\n🔘| قائمة المنع \n●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●\n"
 for k,v in pairs(list) do  
@@ -7291,7 +7287,7 @@ t = "⚠️|لا يوجد كلمات ممنوعه"
 end  
 send(msg.chat_id_, msg.id_,t)  
 end  
-if text and text == 'منع' and msg.reply_to_message_id_ == 0 and Manager(msg) then       
+if text and text == 'مننممع' and msg.reply_to_message_id_ == 0 and Manager(msg) then       
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7327,7 +7323,7 @@ database:del(bot_id.."filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_)
 return false  end  
 end
 
-if text == 'الغاء منع' and msg.reply_to_message_id_ == 0 and Manager(msg) then    
+if text == 'الغاءتنننن منع' and msg.reply_to_message_id_ == 0 and Manager(msg) then    
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7350,7 +7346,7 @@ database:srem(bot_id.."List:Filter"..msg.chat_id_,text)
 return false  end  
 end
 end
-if text == 'منع' and tonumber(msg.reply_to_message_id_) > 0 and Manager(msg) then     
+if text == 'امنع' and tonumber(msg.reply_to_message_id_) > 0 and Manager(msg) then     
 function cb(a,b,c) 
 textt = '📮| تم منع '
 if b.content_.sticker_ then
@@ -7428,11 +7424,11 @@ end,nil)
 end
 end
 
-if text == 'حذف كليشه المطور' and SudoBot(msg) then
+if text == 'حذف كليشتحمنةه المطور' and SudoBot(msg) then
 database:del(bot_id..'Text:Dev:Bot')
 send(msg.chat_id_, msg.id_,'⚠️| تم حذف كليشه المطور')
 end
-if text == 'ضع كليشه المطور' and SudoBot(msg) then
+if text == 'ضع كليشه اونممملمطور' and SudoBot(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7457,7 +7453,7 @@ database:del(bot_id..'Set:Text:Dev:Bot'..msg.chat_id_)
 send(msg.chat_id_, msg.id_,'🚸| تم حفظ كليسه المطور')
 return false
 end
-if text == 'تعين الايدي' and Manager(msg) then
+if text == 'تعين الااهخنخيدي' and Manager(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7488,7 +7484,7 @@ local Text= [[
 send(msg.chat_id_, msg.id_,Text)
 return false  
 end 
-if text == 'حذف الايدي' or text == 'مسح الايدي' then
+if text == 'حذف اراتنةنلايدي' or text == 'مسحونممك الايدي' then
 if Manager(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -7599,7 +7595,7 @@ send(msg.chat_id_, msg.id_,"*🔘| تم حفظ قوانين المجموعه*")
 database:del(bot_id.."Set:Rules:" .. msg.chat_id_ .. ":" .. msg.sender_user_id_)
 end  
 
-if text == 'ضع قوانين' or text == 'وضع قوانين' then 
+if text == 'ضع قوااتخنةةنين' or text == 'وضع ننممقوانين' then 
 if Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -7614,13 +7610,13 @@ database:setex(bot_id.."Set:Rules:" .. msg.chat_id_ .. ":" .. msg.sender_user_id
 send(msg.chat_id_,msg.id_,"*🔖| ارسل لي القوانين الان*")  
 end
 end
-if text == 'مسح القوانين' or text == 'حذف القوانين' then  
+if text == 'مسح القوارتننخنين' or text == 'حذةنممف القوانين' then  
 if Mod(msg) then
 send(msg.chat_id_, msg.id_,"*🔖| تم ازالة قوانين المجموعه*")  
 database:del(bot_id.."Set:Rules:Group"..msg.chat_id_) 
 end
 end
-if text == 'القوانين' or text == 'قوانين' then 
+if text == 'القوانوتتنين' or text == 'قوانةنننين' then 
 local Set_Rules = database:get(bot_id.."Set:Rules:Group" .. msg.chat_id_)   
 if Set_Rules then     
 send(msg.chat_id_,msg.id_, Set_Rules)   
@@ -8080,11 +8076,11 @@ end;end,nil)
 return false
 end
 ------------------------------------------------------------------------
-if text == 'مسح الوزراء' and BasicConstructor(msg) then
+if text == 'مسح الوزرتتخخاء' and BasicConstructor(msg) then
 database:del(bot_id..'WZ:EE:R'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, ' ▫️⁝ تم مسح الوزراء')
 end
-if text == ("الوزراء") and BasicConstructor(msg) then
+if text == ("الوزرتتتتاء") and BasicConstructor(msg) then
 local list = database:smembers(bot_id..'WZ:EE:R'..msg.chat_id_)
 t = "\n ▫️⁝ قائمة الوزراء \n≪━━━━━━AST━━━━━━≫\n"
 for k,v in pairs(list) do
@@ -8100,7 +8096,7 @@ t = " ▫️⁝ لا يوجد الوزراء"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == ("تاك للوزراء") or text == ("صيح الوزراء") then
+if text == ("تاك للوتنخخزراء") or text == ("صيننننح الوزراء") then
 local list = database:smembers(bot_id..'WZ:EE:R'..msg.chat_id_)
 t = "\n ▫️⁝ وينكم يالوزراء تعالو ☆ \n≪━━━━━━AST━━━━━━≫\n"
 for k,v in pairs(list) do
@@ -8116,7 +8112,7 @@ t = " ▫️⁝ لا يوجد وزيريه"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == ("رفع وزير") and msg.reply_to_message_id_ and BasicConstructor(msg) then
+if text == ("رفع ونننوزير") and msg.reply_to_message_id_ and BasicConstructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8141,8 +8137,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^رفع وزير @(.*)$") and BasicConstructor(msg) then
-local username = text:match("^رفع وزير @(.*)$")
+if text and text:match("^رفع نننوزير @(.*)$") and BasicConstructor(msg) then
+local username = text:match("^رفع وننننزير @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8174,8 +8170,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^رفع وزير (%d+)$") and BasicConstructor(msg) then
-local userid = text:match("^رفع وزير (%d+)$")
+if text and text:match("^رفع وزنممحير (%d+)$") and BasicConstructor(msg) then
+local userid = text:match("^رفع وننننزير (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8202,7 +8198,7 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end
-if text == ("تنزيل وزير") and msg.reply_to_message_id_ and BasicConstructor(msg) then
+if text == ("تنزيل ووننموزير") and msg.reply_to_message_id_ and BasicConstructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8223,8 +8219,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل وزير @(.*)$") and BasicConstructor(msg) then
-local username = text:match("^تنزيل وزير @(.*)$") 
+if text and text:match("^تنزيل ننممموزير @(.*)$") and BasicConstructor(msg) then
+local username = text:match("^تنزيل ننننمموزير @(.*)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8248,8 +8244,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل وزير (%d+)$") and BasicConstructor(msg) then
-local userid = text:match("^تنزيل وزير (%d+)$")
+if text and text:match("^تنزيل ونننمزير (%d+)$") and BasicConstructor(msg) then
+local userid = text:match("^تنزيل وةةةننزير (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8273,11 +8269,11 @@ end;end,nil)
 return false
 end
 ------------------------------------------------------------------------
-if text == "مسح رسايلي" or text == "مسح رسائلي" or text == "حذف رسايلي" or text == "حذف رسائلي" then  
+if text == "مسح رسروتنايلي" or text == "مسح رتتتتسائلي" or text == "حذف رسايلي" or text == "حذف رسائلي" then  
 send(msg.chat_id_, msg.id_,'⚠️| تم مسح رسائلك جميعها'  )  
 database:del(bot_id..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_) 
 end
-if text == "رسايلي" or text == "رسائلي" or text == "msg" then 
+if text == "رسايلتتتتي" or text == "رسةننمائلي" or text == "msg" then 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8289,7 +8285,7 @@ return false
 end
 send(msg.chat_id_, msg.id_,'💌|  عدد رسائلك هنا* » { '..database:get(bot_id..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_)..'}*' ) 
 end 
-if text == 'تفعيل الاذاعه' and SudoBot(msg) then  
+if text == 'تفعيل الاذاعتتتته' and SudoBot(msg) then  
 if database:get(bot_id..'Bc:Bots') then
 database:del(bot_id..'Bc:Bots') 
 Text = '\n🔘| تم تفعيل الاذاعه ' 
@@ -8298,7 +8294,7 @@ Text = '\n💠| بالتاكيد تم تفعيل الاذاعه '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل الاذاعه' and SudoBot(msg) then  
+if text == 'تعطيل الاتتتذاعه' and SudoBot(msg) then  
 if not database:get(bot_id..'Bc:Bots') then
 database:set(bot_id..'Bc:Bots',true) 
 Text = '\n🔘| تم تعطيل الاذاعه' 
@@ -8307,7 +8303,7 @@ Text = '\n💠| بالتاكيد تم تعطيل الاذاعه'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل التواصل' and SudoBot(msg) then  
+if text == 'تفعيل التواااانمصل' and SudoBot(msg) then  
 if database:get(bot_id..'Tuasl:Bots') then
 database:del(bot_id..'Tuasl:Bots') 
 Text = '\n📞| تم تفعيل التواصل ' 
@@ -8316,7 +8312,7 @@ Text = '\n💠| بالتاكيد تم تفعيل التواصل '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل التواصل' and SudoBot(msg) then  
+if text == 'تعطيل التونممماصل' and SudoBot(msg) then  
 if not database:get(bot_id..'Tuasl:Bots') then
 database:set(bot_id..'Tuasl:Bots',true) 
 Text = '\n📞| تم تعطيل التواصل' 
@@ -8325,7 +8321,7 @@ Text = '\n💠| بالتاكيد تم تعطيل التواصل'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل البوت الخدمي' and SudoBot(msg) then  
+if text == 'تفعيل البوت الخوووودمي' and SudoBot(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8343,7 +8339,7 @@ Text = '\n💠| بالتاكيد تم تفعيل البوت الخدمي '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل البوت الخدمي' and SudoBot(msg) then  
+if text == 'تعطيل البوت الخونممدمي' and SudoBot(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8369,8 +8365,8 @@ if text == 'تعطيل التنظيف' and Manager(msg) then
 database:set(bot_id..'lock:del'..msg.chat_id_,true) 
 send(msg.chat_id_, msg.id_,'☑┇تم تعطيل التنظيف') 
 end
-if text and text:match('^تنظيف (%d+)$') and cleaner(msg) then
-local num = tonumber(text:match('^تنظيف (%d+)$')) 
+if text and text:match('^امسح (%d+)$') and cleaner(msg) then
+local num = tonumber(text:match('^امسح (%d+)$')) 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8442,7 +8438,7 @@ DeleteMessage(msg.chat_id_,Msgs2)
 end,nil)  
 send(msg.chat_id_, msg.id_,'✔┇ تم حذف جميع الرسائل المعدله')
 end
-if text == "تغير اسم البوت" or text == "تغيير اسم البوت" then 
+if text == "تغير اسم اهههلبوت" or text == "تغيير انتتتسم البوت" then 
 if SudoBot(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -8459,8 +8455,8 @@ end
 return false
 end
 
-if text == ""..(database:get(bot_id..'Name:Bot') or 'الاسطورة').."" then  
-Namebot = (database:get(bot_id..'Name:Bot') or 'الاسطورة')
+if text == ""..(database:get(bot_id..'Name:Bot') or 'الاساننطورة').."" then  
+Namebot = (database:get(bot_id..'Name:Bot') or 'الاسننررطورة')
 local MARCOS_Msg = {
 'مازا تريد مني😌؟',
 '♥️ لبى من يصوت ♥️',
@@ -8479,7 +8475,7 @@ local MARCOS_Msg = {
 send(msg.chat_id_, msg.id_,'['..MARCOS_Msg[math.random(#MARCOS_Msg)]..']') 
 return false
 end
-if text=="اذاعه خاص" and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
+if text=="اذاعه خلتنراص" and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
 if database:get(bot_id..'Bc:Bots') and not SudoBot(msg) then 
 send(msg.chat_id_, msg.id_,'⚠️| الاذاعه معطله من قبل المطور الاساسي')
 return false
@@ -8497,7 +8493,7 @@ database:setex(bot_id.."Send:Bc:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id
 send(msg.chat_id_, msg.id_,"📥| ارسل لي سواء >> { ملصق, متحركه, صوره, رساله }\n⚠️| للخروج ارسل الغاء ") 
 return false
 end 
-if text=="اذاعه" and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
+if text=="اذااتتعه" and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
 if database:get(bot_id..'Bc:Bots') and not SudoBot(msg) then 
 send(msg.chat_id_, msg.id_,'⚠️| الاذاعه معطله من قبل المطور الاساسي')
 return false
@@ -8515,7 +8511,7 @@ database:setex(bot_id.."Send:Bc:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user
 send(msg.chat_id_, msg.id_,"📥| ارسل لي سواء >> { ملصق, متحركه, صوره, رساله }\n⚠️| للخروج ارسل الغاء ") 
 return false
 end  
-if text=="اذاعه بالتوجيه" and msg.reply_to_message_id_ == 0  and Sudo(msg) then 
+if text=="اذاعه بالااننتوجيه" and msg.reply_to_message_id_ == 0  and Sudo(msg) then 
 if database:get(bot_id..'Bc:Bots') and not SudoBot(msg) then 
 send(msg.chat_id_, msg.id_,'⚠️| الاذاعه معطله من قبل المطور الاساسي')
 return false
@@ -8533,7 +8529,7 @@ database:setex(bot_id.."Send:Fwd:Grops" .. msg.chat_id_ .. ":" .. msg.sender_use
 send(msg.chat_id_, msg.id_,"💠| ارسل لي التوجيه الان") 
 return false
 end 
-if text=="اذاعه بالتوجيه خاص" and msg.reply_to_message_id_ == 0  and Sudo(msg) then 
+if text=="اذاعه بالتوجيه اوووخاص" and msg.reply_to_message_id_ == 0  and Sudo(msg) then 
 if database:get(bot_id..'Bc:Bots') and not SudoBot(msg) then 
 send(msg.chat_id_, msg.id_,'⚠️| الاذاعه معطله من قبل المطور الاساسي')
 return false
@@ -8551,8 +8547,8 @@ database:setex(bot_id.."Send:Fwd:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_i
 send(msg.chat_id_, msg.id_,"💠| ارسل لي التوجيه الان") 
 return false
 end 
-if text and text:match('^ضع اسم (.*)') and Manager(msg) or text and text:match('^وضع اسم (.*)') and Manager(msg) then 
-local Name = text:match('^ضع اسم (.*)') or text:match('^وضع اسم (.*)') 
+if text and text:match('^ضع اتتننمسم (.*)') and Manager(msg) or text and text:match('^وضع اسم (.*)') and Manager(msg) then 
+local Name = text:match('^ضعتنتتت اسم (.*)') or text:match('^وضع اسم (.*)') 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8601,7 +8597,7 @@ end
 send(msg.chat_id_,msg.id_,t)
 end,nil)
 end
-if text == ("تنزيل الكل") and msg.reply_to_message_id_ ~= 0 and Manager(msg) then
+if text == ("تنزيلنممم الكل") and msg.reply_to_message_id_ ~= 0 and Manager(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8619,7 +8615,7 @@ end
 if database:sismember(bot_id..'Sudo:User',result.sender_user_id_) then
 dev = 'المطور ،' else dev = '' end
 if database:sismember(bot_id..'CoSu'..msg.chat_id_, result.sender_user_id_) then
-cu = 'المالك ،' else cu = '' end
+cu = 'اللاس ،' else cu = '' end
 if database:sismember(bot_id..'Basic:Constructor'..msg.chat_id_, result.sender_user_id_) then
 crr = 'منشئ اساسي ،' else crr = '' end
 if database:sismember(bot_id..'Constructor'..msg.chat_id_, result.sender_user_id_) then
@@ -8672,7 +8668,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 end
 
-if text == ("مسح ردود المطور") and SudoBot(msg) then 
+if text == ("مسح ردود ابمةرتوزلمطور") and SudoBot(msg) then 
 local list = database:smembers(bot_id..'List:Rd:Sudo')
 for k,v in pairs(list) do
 database:del(bot_id.."Add:Rd:Sudo:Gif"..v)   
@@ -8688,7 +8684,7 @@ end
 send(msg.chat_id_, msg.id_,"📌| تم مسح ردود المطور")
 end
 
-if text == ("ردود المطور") and SudoBot(msg) then 
+if text == ("ردود انةووالمطور") and SudoBot(msg) then 
 local list = database:smembers(bot_id..'List:Rd:Sudo')
 text = "\n🔘| قائمة ردود المطور \n●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●\n"
 for k,v in pairs(list) do
@@ -8784,7 +8780,7 @@ database:srem(bot_id..'List:Rd:Sudo', text)
 return false
 end
 end
-if text == 'اضف رد عام' and SudoBot(msg) then 
+if text == 'تننماضف رد عام' and SudoBot(msg) then 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8798,7 +8794,7 @@ send(msg.chat_id_, msg.id_,'📥|  تمام الحين ارسل الكلمه ا�
 database:set(bot_id..'Set:Rd'..msg.sender_user_id_..':'..msg.chat_id_,true)
 return false 
 end
-if text == 'حذف رد عام' and SudoBot(msg) then 
+if text == 'حذف رد اونحمعام' and SudoBot(msg) then 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8858,7 +8854,7 @@ database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text)
 end  
 end
 end
-if text == ("مسح ردود المدير") and Manager(msg) then
+if text == ("مسح ردنممود المدير") and Manager(msg) then
 local list = database:smembers(bot_id..'List:Manager'..msg.chat_id_..'')
 for k,v in pairs(list) do
 database:del(bot_id.."Add:Rd:Manager:Gif"..v..msg.chat_id_)   
@@ -8874,7 +8870,7 @@ end
 send(msg.chat_id_, msg.id_,"📌| تم مسح ردود المدير")
 end
 
-if text == ("ردود المدير") and Manager(msg) then
+if text == ("ردولنمند المدير") and Manager(msg) then
 local list = database:smembers(bot_id..'List:Manager'..msg.chat_id_..'')
 text = "💠| قائمه ردود المدير \n━━━━━━━━━━━━━\n"
 for k,v in pairs(list) do
@@ -8982,7 +8978,7 @@ database:srem(bot_id..'List:Manager'..msg.chat_id_..'', text)
 return false
 end
 end
-if text == 'اضف رد' and Manager(msg) then
+if text == 'اضفرتنن رد' and Manager(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8996,7 +8992,7 @@ send(msg.chat_id_, msg.id_,'💠|  تمام الحين ارسل الكلمه ا�
 database:set(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_,true)
 return false 
 end
-if text == 'حذف رد' and Manager(msg) then
+if text == 'حذتنممف رد' and Manager(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -9174,7 +9170,7 @@ database:srem(bot_id..'Chek:Groups',msg.chat_id_)
 end
 return false  
 end
-if text == "بوت" or text == "الاسطورة"  then  
+if text == "بوزخوةمت" or text == "الاسكوواطورة"  then  
 local ASTORH_Msg = {
 'ها عمري ♥',
 'شعندك !؟ 👀',
@@ -9193,7 +9189,7 @@ local ASTORH_Msg = {
 send(msg.chat_id_, msg.id_,'['..ASTORH_Msg[math.random(#ASTORH_Msg)]..']') 
 return false
 end
-if text == 'الاحصائيات' or text == 'المجموعات' or text == 'المشتركين' then
+if text == 'الاحصالخووئيات' or text == 'المجموعتممات' or text == 'المشتركين' then
 if Sudo(msg) then 
 local Groups = database:scard(bot_id..'Chek:Groups')  
 local Users = database:scard(bot_id..'User_Bot')  
@@ -9202,7 +9198,7 @@ send(msg.chat_id_, msg.id_,Text)
 end
 return false
 end
-if text == 'مسح المشتركين' and is_devtaha(msg) then   
+if text == 'مسح المشلنةوتركين' and is_devtaha(msg) then   
 local list = tahadevstorm:smembers(DEVSTOR..'usersbot')   
 local pv = 0
 for k,v in pairs(list) do    
@@ -9211,7 +9207,7 @@ pv = pv + 1
 end   
 storm_sendMsg(msg.chat_id_, msg.id_, 1, '*🎲¦ تم مسح » ❪'..pv..'❫ من المشتركين *\n', 1, 'md') 
 end  
-if text == 'تفعيل المغادره' and SudoBot(msg) then   
+if text == 'تفعيل اللتنمغادره' and SudoBot(msg) then   
 if database:get(bot_id..'Left:Bot'..msg.chat_id_) then
 Text = '🔘| تم تفعيل مغادرة البوت'
 database:del(bot_id..'Left:Bot'..msg.chat_id_)  
@@ -9220,7 +9216,7 @@ Text = '💠| بالتاكيد تم تفعيل مغادرة البوت'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل المغادره' and SudoBot(msg) then  
+if text == 'تعطيل الماوننغادره' and SudoBot(msg) then  
 if not database:get(bot_id..'Left:Bot'..msg.chat_id_) then
 Text = '🔘| تم تعطيل مغادرة البوت'
 database:set(bot_id..'Left:Bot'..msg.chat_id_,true)   
@@ -9230,7 +9226,7 @@ end
 send(msg.chat_id_, msg.id_, Text) 
 end
 
-if text == 'تفعيل ردود المدير' and Manager(msg) then   
+if text == 'تفعيل ردود اررتتلمدير' and Manager(msg) then   
 if database:get(bot_id..'Reply:Manager'..msg.chat_id_) then
 Text = '🎗️| تم تفعيل ردود المدير'
 database:del(bot_id..'Reply:Manager'..msg.chat_id_)  
@@ -9239,7 +9235,7 @@ Text = '📮| تم تفعيل ردود المدير'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل ردود المدير' and Manager(msg) then  
+if text == 'تعطيل ردود الروننمدير' and Manager(msg) then  
 if not database:get(bot_id..'Reply:Manager'..msg.chat_id_) then
 database:set(bot_id..'Reply:Manager'..msg.chat_id_,true)  
 Text = '\n⚠️| تم تعطيل ردود المدير' 
@@ -9248,7 +9244,7 @@ Text = '\n💠| بالتاكيد تم تعطيل ردود المدير'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل ردود المطور' and Manager(msg) then   
+if text == 'تفعيل ردود الاتننمطور' and Manager(msg) then   
 if database:get(bot_id..'Reply:Sudo'..msg.chat_id_) then
 database:del(bot_id..'Reply:Sudo'..msg.chat_id_)  
 Text = '\n🔘| تم تفعيل ردود المطور' 
@@ -9257,7 +9253,7 @@ Text = '\n💠| بالتاكيد تم تفعيل ردود المطور'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل ردود المطور' and Manager(msg) then  
+if text == 'تعطيل ردود المطتتتتور' and Manager(msg) then  
 if not database:get(bot_id..'Reply:Sudo'..msg.chat_id_) then
 database:set(bot_id..'Reply:Sudo'..msg.chat_id_,true)   
 Text = '\n⚠️| تم تعطيل ردود المطور' 
@@ -9267,7 +9263,7 @@ end
 send(msg.chat_id_, msg.id_,Text) 
 end
 
-if text == 'تفعيل الايدي' and Manager(msg) then   
+if text == 'تفعيل الايلاتندي' and Manager(msg) then   
 if database:get(bot_id..'Bot:Id'..msg.chat_id_)  then
 database:del(bot_id..'Bot:Id'..msg.chat_id_) 
 Text = '\n🔰| تم تفعيل الايدي' 
@@ -9276,7 +9272,7 @@ Text = '\n💠| بالتاكيد تم تفعيل الايدي'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل الايدي' and Manager(msg) then  
+if text == 'تعطيل الايررتخخدي' and Manager(msg) then  
 if not database:get(bot_id..'Bot:Id'..msg.chat_id_)  then
 database:set(bot_id..'Bot:Id'..msg.chat_id_,true) 
 Text = '\n🚸| تم تعطيل الايدي' 
@@ -9285,7 +9281,7 @@ Text = '\n💠| بالتاكيد تم تعطيل الايدي'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل الايدي بالصوره' and Manager(msg) then   
+if text == 'تفعيل الايدي بالصرتتخوره' and Manager(msg) then   
 if database:get(bot_id..'Bot:Id:Photo'..msg.chat_id_)  then
 database:del(bot_id..'Bot:Id:Photo'..msg.chat_id_) 
 Text = '\n🔘| تم تفعيل الايدي بالصور ' 
@@ -9294,7 +9290,7 @@ Text = '\n💠| بالتاكيد تم تفعيل الايدي بالصوره '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل الايدي بالصوره' and Manager(msg) then  
+if text == 'تعطيل الايدي باااتخختلصوره' and Manager(msg) then  
 if not database:get(bot_id..'Bot:Id:Photo'..msg.chat_id_)  then
 database:set(bot_id..'Bot:Id:Photo'..msg.chat_id_,true) 
 Text = '\n🔘| تم تعطيل الايدي بالصوره' 
@@ -9303,7 +9299,7 @@ Text = '\n💠| بالتاكيد تم تعطيل الايدي بالصوره'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل الحظر' and Constructor(msg) then   
+if text == 'تفعيل الحتتتنظر' and Constructor(msg) then   
 if database:get(bot_id..'Lock:kick'..msg.chat_id_)  then
 database:del(bot_id..'Lock:kick'..msg.chat_id_) 
 Text = '\n🔰| تم تفعيل الحظر ' 
@@ -9312,7 +9308,7 @@ Text = '\n💠|  بالتاكيد تم تفعيل الحظر '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل الحظر' and Constructor(msg) then  
+if text == 'تعطيل الحارتنظر' and Constructor(msg) then  
 if not database:get(bot_id..'Lock:kick'..msg.chat_id_)  then
 database:set(bot_id..'Lock:kick'..msg.chat_id_,true) 
 Text = '\n🔰| تم تعطيل الحظر' 
@@ -9321,7 +9317,7 @@ Text = '\n💠| بالتاكيد تم تعطيل الحظر'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل الرفع' and Constructor(msg) then   
+if text == 'تفعيل الربللغفع' and Constructor(msg) then   
 if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_)  then
 database:del(bot_id..'Lock:Add:Bot'..msg.chat_id_) 
 Text = '\n🔘| تم تفعيل الرفع ' 
@@ -9330,7 +9326,7 @@ Text = '\n📮| بالتاكيد تم تفعيل الرفع '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل الرفع' and Constructor(msg) then  
+if text == 'تعطيل الربغهتفع' and Constructor(msg) then  
 if not database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_)  then
 database:set(bot_id..'Lock:Add:Bot'..msg.chat_id_,true) 
 Text = '\n📌| تم تعطيل الرفع' 
@@ -9339,7 +9335,7 @@ Text = '\n💠| بالتاكيد تم تعطيل الرفع'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'ايدي' and tonumber(msg.reply_to_message_id_) > 0 then
+if text == 'ايداانني' and tonumber(msg.reply_to_message_id_) > 0 then
 function start_function(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(extra,data) 
 local Msguser = tonumber(database:get(bot_id..'Msg_User'..msg.chat_id_..':'..result.sender_user_id_) or 1) 
@@ -9354,8 +9350,8 @@ end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 end
-if text and text:match("^ايدي @(.*)$") then
-local username = text:match("^ايدي @(.*)$")
+if text and text:match("^ايدونمي @(.*)$") then
+local username = text:match("^ايداخووي @(.*)$")
 function start_function(extra, result, success)
 if result.id_ then
 tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(extra,data) 
@@ -9374,7 +9370,7 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 end
-if text == 'رتبتي' then
+if text == 'رتبتتنتي' then
 local rtp = Rutba(msg.sender_user_id_,msg.chat_id_)
 send(msg.chat_id_, msg.id_,'*📌| رتبتك في البوت* » '..rtp)
 end
@@ -9396,7 +9392,7 @@ end
 if text == 'ايديي' then
 send(msg.chat_id_, msg.id_,'📮| ايديك » '..msg.sender_user_id_)
 end
-if text == 'كشف' and tonumber(msg.reply_to_message_id_) > 0 then
+if text == 'كشاننف' and tonumber(msg.reply_to_message_id_) > 0 then
 function start_function(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(extra,data) 
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
@@ -9408,8 +9404,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 end
 ---------
-if text and text:match("^كشف @(.*)$") then
-local username = text:match("^كشف @(.*)$")
+if text and text:match("^كتننشف @(.*)$") then
+local username = text:match("^كهتتتشف @(.*)$")
 function start_function(extra, result, success)
 if result.id_ then
 tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(extra,data) 
@@ -9440,7 +9436,7 @@ send(msg.chat_id_, msg.id_, taha)
 end,nil)
 end,nil)
 end 
-if text == 'اطردني' or text == 'طردني' then
+if text == 'اطاتخخردني' or text == 'طردنلتهي' then
 if not database:get(bot_id..'Cick:Me'..msg.chat_id_) then
 if Can_or_NotCan(msg.sender_user_id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, '\n*⚠| عذرا لا استطيع طرد ( '..Rutba(msg.sender_user_id_,msg.chat_id_)..' )*')
@@ -9469,8 +9465,8 @@ else
 send(msg.chat_id_, msg.id_,'⚠| امر اطردني تم تعطيله من قبل المدراء ') 
 end
 end
-if text and text:match("^صيح (.*)$") then
-local username = text:match("^صيح (.*)$") 
+if text and text:match("^صيتتتتح (.*)$") then
+local username = text:match("^صيتننح (.*)$") 
 if not database:get(bot_id..'Seh:User'..msg.chat_id_) then
 function start_function(extra, result, success)
 if result and result.message_ and result.message_ == "USERNAME_NOT_OCCUPIED" then 
@@ -9542,7 +9538,7 @@ Text = '\n💠| بالتاكيد تم تعطيل امر منو ضافني'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل صيح' and Manager(msg) then   
+if text == 'تفعيل لااصيح' and Manager(msg) then   
 if database:get(bot_id..'Seh:User'..msg.chat_id_) then
 Text = '🔘| تم تفعيل امر صيح'
 database:del(bot_id..'Seh:User'..msg.chat_id_)  
@@ -9551,7 +9547,7 @@ Text = '💠| بالتاكيد تم تفعيل امر صيح'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل صيح' and Manager(msg) then  
+if text == 'تعطيل اتتتصيح' and Manager(msg) then  
 if not database:get(bot_id..'Seh:User'..msg.chat_id_) then
 database:set(bot_id..'Seh:User'..msg.chat_id_,true)  
 Text = '\n🔘| تم تعطيل امر صيح'
@@ -9560,14 +9556,14 @@ Text = '\n💠| بالتاكيد تم تعطيل امر صيح'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تنزيل جميع الرتب' and BasicConstructor(msg) then  
+if text == 'تنزيل جميع الاخنةرتب' and BasicConstructor(msg) then  
 database:del(bot_id..'Constructor'..msg.chat_id_)
 database:del(bot_id..'Manager'..msg.chat_id_)
 database:del(bot_id..'Mod:User'..msg.chat_id_)
 database:del(bot_id..'Special:User'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, '\n🔰| تم تنزيل الكل من الرتب الاتيه \n♻️| المميزين ، الادمنيه ، المدراء ، المنشئين \n')
 end
-if text == 'تفعيل اطردني' and Manager(msg) then   
+if text == 'تفعيل اوونمطردني' and Manager(msg) then   
 if database:get(bot_id..'Cick:Me'..msg.chat_id_) then
 Text = '*🔰| تم تفعيل امر اطردني*'
 database:del(bot_id..'Cick:Me'..msg.chat_id_)  
@@ -9576,7 +9572,7 @@ Text = '*💠| بالتاكيد تم تفعيل امر اطردني*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل اطردني' and Manager(msg) then  
+if text == 'تعطيل اطتننخردني' and Manager(msg) then  
 if not database:get(bot_id..'Cick:Me'..msg.chat_id_) then
 database:set(bot_id..'Cick:Me'..msg.chat_id_,true)  
 Text = '\n*📌|  تم تعطيل امر اطردني*'
@@ -9599,7 +9595,7 @@ send(msg.chat_id_, msg.id_,'لا تمتلك صوره في حسابك', 'md')
   end end
 tdcli_function ({ ID = "GetUserProfilePhotos", user_id_ = msg.sender_user_id_, offset_ = 0, limit_ = 1 }, getpro, nil)
 end
-if text == 'تغير الايدي' and Manager(msg) then 
+if text == 'تغير انحةوالايدي' and Manager(msg) then 
 local List = {
 [[
 ゠𝚄𝚂𝙴𝚁 𖨈 الاسم 𖥲 .
@@ -9694,7 +9690,7 @@ local Text_Rand = List[math.random(#List)]
 database:set(bot_id.."KLISH:ID"..msg.chat_id_,Text_Rand)
 send(msg.chat_id_, msg.id_,'🎫| تم تغير الايدي ارسل ايدي لرؤيته')
 end
-if text == ("ايدي") and msg.reply_to_message_id_ == 0 and not database:get(bot_id..'Bot:Id'..msg.chat_id_) then      
+if text == ("اياننوودي") and msg.reply_to_message_id_ == 0 and not database:get(bot_id..'Bot:Id'..msg.chat_id_) then      
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -9708,7 +9704,7 @@ if not database:sismember(bot_id..'Spam:Texting'..msg.sender_user_id_,text) then
 database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text) 
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da)  tdcli_function ({ ID = "SendChatAction",  chat_id_ = msg.sender_user_id_, action_ = {  ID = "SendMessageTypingAction", progress_ = 100}  },function(arg,ta)  tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)  tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = msg.sender_user_id_,offset_ = 0,limit_ = 1},function(extra,taha,success) 
 if da.status_.ID == "ChatMemberStatusCreator" then 
-rtpa = 'المالك'
+rtpa = 'اللاس'
 elseif da.status_.ID == "ChatMemberStatusEditor" then 
 rtpa = 'مشرف' 
 elseif da.status_.ID == "ChatMemberStatusMember" then 
@@ -9825,11 +9821,11 @@ if text == "مسح تعديلاتي" or text == "حذف تعديلاتي" then
 send(msg.chat_id_, msg.id_,'📌| تم مسح تعديلاتك'  )  
 database:del(bot_id..'edits'..msg.chat_id_..msg.sender_user_id_)
 end
-if text == "مسح جهاتي" or text == "حذف جهاتي" then  
+if text == "مساننح جهاتي" or text == "حذةننف جهاتي" then  
 send(msg.chat_id_, msg.id_,'📌| تم مسح جهاتك'  )  
 database:del(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_)
 end
-if text == 'جهاتي' or text == 'شكد ضفت' then 
+if text == 'جهااتننتي' or text == 'شكد اننضفت' then 
 local Num = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_) or 0) 
 if Num == 0 then 
 Text = '*⚠️| لم تقم بااضافة اي احد*'
@@ -9838,7 +9834,7 @@ Text = '📮| عدد جهاتك *» { '..Num..' } *'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == "تنظيف المشتركين" and SudoBot(msg) then 
+if text == "تنظيف المشتونممركين" and SudoBot(msg) then 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -9931,7 +9927,7 @@ end
 return false
 end
 
-if text ==("مسح") and Mod(msg) and tonumber(msg.reply_to_message_id_) > 0 then
+if text ==("مونمحسح") and Mod(msg) and tonumber(msg.reply_to_message_id_) > 0 then
 DeleteMessage(msg.chat_id_,{[0] = tonumber(msg.reply_to_message_id_),msg.id_})   
 end   
 if database:get(bot_id.."numadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
@@ -9963,24 +9959,24 @@ database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..iduserr,numadded)
 send(msg.chat_id_, msg.id_,  1, "??| تم اضافة له {"..numadded..'} من النقاط', 1 , 'md')  
 end
 ------------------------------------------------------------
-if text and text:match("^اضف رسائل (%d+)$") and msg.reply_to_message_id_ == 0 and Constructor(msg) then    
-taha = text:match("^اضف رسائل (%d+)$")
+if text and text:match("^اضفوتت رسائل (%d+)$") and msg.reply_to_message_id_ == 0 and Constructor(msg) then    
+taha = text:match("^اضف تتترسائل (%d+)$")
 database:set(bot_id..'id:user'..msg.chat_id_,taha)  
 database:setex(bot_id.."numadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 120, true)  
 send(msg.chat_id_, msg.id_, '✉¦ ارسل لي عدد الرسائل الان') 
 return false
 end
 ------------------------------------------------------------------------
-if text and text:match("^اضف نقاط (%d+)$") and msg.reply_to_message_id_ == 0 and Constructor(msg) then  
-taha = text:match("^اضف نقاط (%d+)$")
+if text and text:match("^اضف تتتنقاط (%d+)$") and msg.reply_to_message_id_ == 0 and Constructor(msg) then  
+taha = text:match("^اضف نقتتتاط (%d+)$")
 database:set(bot_id..'idgem:user'..msg.chat_id_,taha)  
 database:setex(bot_id.."gemadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 120, true)  
 send(msg.chat_id_, msg.id_, '🔘| ارسل لي عدد النقاط التي تريد اضافتها') 
 return false
 end
 ------------------------------------------------------------------------
-if text and text:match("^اضف نقاط (%d+)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
-local Num = text:match("^اضف نقاط (%d+)$")
+if text and text:match("^اضف نتتتقاط (%d+)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
+local Num = text:match("^اضف نتتتقاط (%d+)$")
 function reply(extra, result, success)
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..result.sender_user_id_,Num)  
 send(msg.chat_id_, msg.id_,"🚸| تم اضافة له *{"..Num..'}* من النقاط')  
@@ -9989,8 +9985,8 @@ tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(ms
 return false
 end
 ------------------------------------------------------------------------
-if text and text:match("^اضف رسائل (%d+)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
-local Num = text:match("^اضف رسائل (%d+)$")
+if text and text:match("^اضف رتتتسائل (%d+)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
+local Num = text:match("^اضتتتتف رسائل (%d+)$")
 function reply(extra, result, success)
 database:del(bot_id..'Msg_User'..msg.chat_id_..':'..result.sender_user_id_) 
 database:incrby(bot_id..'Msg_User'..msg.chat_id_..':'..result.sender_user_id_,Num)  
@@ -10080,43 +10076,43 @@ local chat = msg.chat_id_
 delete_msg(chat, msgs)
 end
 
-if text and text:match("^تغير رتبة المطور (.*)$") and Manager(msg) then
-local Teext = text:match("^تغير رتبة المطور (.*)$") 
+if text and text:match("^تغير رتاتتنننبة المطور (.*)$") and Manager(msg) then
+local Teext = text:match("^تغير رتبة التتتننمطور (.*)$") 
 database:set(bot_id.."Sudo:Rd"..msg.chat_id_,Teext)
 send(msg.chat_id_, msg.id_,"👥| تم تغير رتبة المطور الى » "..Teext)
 end
-if text and text:match("^تغير رتبة منشئ الاساسي (.*)$") and Manager(msg) then
-local Teext = text:match("^تغير رتبة منشئ الاساسي (.*)$") 
+if text and text:match("^تغير رتبة منشئ الاتتتساسي (.*)$") and Manager(msg) then
+local Teext = text:match("^تغير رتبة منشاااتئ الاساسي (.*)$") 
 database:set(bot_id.."BasicConstructor:Rd"..msg.chat_id_,Teext)
 send(msg.chat_id_, msg.id_,"👥| تم تغير رتبة المنشئ الاساسي الى » "..Teext)
 end
-if text and text:match("^تغير رتبة المالك (.*)$") and Manager(msg) then
-local Teext = text:match("^تغير رتبة المالك (.*)$") 
+if text and text:match("^تغير رتبة اللاس (.*)$") and Manager(msg) then
+local Teext = text:match("^تغير رتبة اللاس (.*)$") 
 database:set(bot_id.."CoSu:Rd"..msg.chat_id_,Teext)
-send(msg.chat_id_, msg.id_," 🔷|تم تغير رتبة المالك الى » "..Teext)
+send(msg.chat_id_, msg.id_," 🔷|تم تغير رتبة اللاس الى » "..Teext)
 end
-if text and text:match("^تغير رتبة المنشئ (.*)$") and Manager(msg) then
-local Teext = text:match("^تغير رتبة المنشئ (.*)$") 
+if text and text:match("^تغير رتبة المااانشئ (.*)$") and Manager(msg) then
+local Teext = text:match("^تغير رلللللتبة المنشئ (.*)$") 
 database:set(bot_id.."Constructor:Rd"..msg.chat_id_,Teext)
 send(msg.chat_id_, msg.id_,"👥| تم تغير رتبة المنشئ الى » "..Teext)
 end
-if text and text:match("^تغير رتبة المدير (.*)$") and Manager(msg) then
-local Teext = text:match("^تغير رتبة المدير (.*)$") 
+if text and text:match("^تغير رتبة للللالمدير (.*)$") and Manager(msg) then
+local Teext = text:match("^تغير رتبااااة المدير (.*)$") 
 database:set(bot_id.."Manager:Rd"..msg.chat_id_,Teext) 
 send(msg.chat_id_, msg.id_,"👥| تم تغير رتبة المدير الى » "..Teext)
 end
-if text and text:match("^تغير رتبة الادمن (.*)$") and Manager(msg) then
-local Teext = text:match("^تغير رتبة الادمن (.*)$") 
+if text and text:match("^تغير رتبة الانةةندمن (.*)$") and Manager(msg) then
+local Teext = text:match("^تغير رتللليبببة الادمن (.*)$") 
 database:set(bot_id.."Mod:Rd"..msg.chat_id_,Teext)
 send(msg.chat_id_, msg.id_,"👥| تم تغير رتبة الادمن الى » "..Teext)
 end
-if text and text:match("^تغير رتبة المميز (.*)$") and Manager(msg) then
-local Teext = text:match("^تغير رتبة المميز (.*)$") 
+if text and text:match("^تغير رتبة التتننمميز (.*)$") and Manager(msg) then
+local Teext = text:match("^تغير رتبة ممممالمميز (.*)$") 
 database:set(bot_id.."Special:Rd"..msg.chat_id_,Teext)
 send(msg.chat_id_, msg.id_,"👥| تم تغير رتبة المميز الى » "..Teext)
 end
-if text and text:match("^تغير رتبة العضو (.*)$") and Manager(msg) then
-local Teext = text:match("^تغير رتبة العضو (.*)$") 
+if text and text:match("^تغير رتبة الللللعضو (.*)$") and Manager(msg) then
+local Teext = text:match("^تغير رتبةتتتت العضو (.*)$") 
 database:set(bot_id.."Memp:Rd"..msg.chat_id_,Teext)
 send(msg.chat_id_, msg.id_,"👥| تم تغير رتبة العضو الى » "..Teext)
 end
@@ -10195,7 +10191,7 @@ return false
 end
 end
 
-if text == 'استعاده الاوامر' and SudoBot(msg) then
+if text == 'استعاده التوولاوامر' and SudoBot(msg) then
 database:del(bot_id..'help_text')
 database:del(bot_id..'help1_text')
 database:del(bot_id..'help2_text')
@@ -10207,61 +10203,61 @@ database:del(bot_id..'help7_text')
 database:del(bot_id..'help8_text')
 send(msg.chat_id_, msg.id_, '🔘| تم استعادة الاوامر القديمه')
 end
-if text == 'تغير امر الاوامر' and SudoBot(msg) then
+if text == 'تغير امر الاوااااامر' and SudoBot(msg) then
 send(msg.chat_id_, msg.id_, '🎗️| الان يمكنك ارسال الكليشه الاوامر')
 database:set(bot_id..'help'..msg.sender_user_id_,'true')
 return false 
 end
-if text == 'تغير امر م1' and SudoBot(msg) then
+if text == 'تغير امر اااام1' and SudoBot(msg) then
 send(msg.chat_id_, msg.id_, '🔘| الان يمكنك ارسال الكليشه م1')
 database:set(bot_id..'help1'..msg.sender_user_id_,'true')
 return false 
 end
 
-if text == 'تغير امر م2' and SudoBot(msg) then
+if text == 'تغير امللببر م2' and SudoBot(msg) then
 send(msg.chat_id_, msg.id_, '🔘| الان يمكنك ارسال الكليشه م2')
 database:set(bot_id..'help2'..msg.sender_user_id_,'true')
 return false 
 end
 
-if text == 'تغير امر م3' and SudoBot(msg) then
+if text == 'تغير امر نننننم3' and SudoBot(msg) then
 send(msg.chat_id_, msg.id_, '🔘| الان يمكنك ارسال الكليشه م3')
 database:set(bot_id..'help3'..msg.sender_user_id_,'true')
 return false 
 end
 
-if text == 'تغير امر م4' and SudoBot(msg) then
+if text == 'تغير امر ننننم4' and SudoBot(msg) then
 send(msg.chat_id_, msg.id_, '🔘| الان يمكنك ارسال الكليشه م4')
 database:set(bot_id..'help4'..msg.sender_user_id_,'true')
 return false 
 end
 
-if text == 'تغير امر م5' and SudoBot(msg) then
+if text == 'تغير امر مثثثث5' and SudoBot(msg) then
 send(msg.chat_id_, msg.id_, '🔘| الان يمكنك ارسال الكليشه م5')
 database:set(bot_id..'help5'..msg.sender_user_id_,'true')
 return false 
 end
 
-if text == 'تغير امر م6' and SudoBot(msg) then
+if text == 'تغير امر تتتتت' and SudoBot(msg) then
 send(msg.chat_id_, msg.id_, '🔘| الان يمكنك ارسال الكليشه م6')
 database:set(bot_id..'help6'..msg.sender_user_id_,'true')
 return false 
 end
 
-if text == 'تغير امر م7' and SudoBot(msg) then
+if text == 'تغير امررراا م7' and SudoBot(msg) then
 send(msg.chat_id_, msg.id_, '🔘| الان يمكنك ارسال الكليشه م7')
 database:set(bot_id..'help7'..msg.sender_user_id_,'true')
 return false 
 end
 
-if text == 'تغير امر م8' and SudoBot(msg) then
+if text == 'تغير امراااا م8' and SudoBot(msg) then
 send(msg.chat_id_, msg.id_, '🔘| الان يمكنك ارسال الكليشه م8')
 database:set(bot_id..'help8'..msg.sender_user_id_,'true')
 return false 
 end
 
 
-if text == 'الاوامر' then
+if text == 'الاوامرا' then
 if not Mod(msg) then
 send(msg.chat_id_, msg.id_,'⚠️| هاذا الامر خاص بالادمنيه\n🔖| ارسل {م8} لعرض اوامر الاعضاء') 
 return false
@@ -10442,7 +10438,7 @@ end
 local help_text = database:get(bot_id..'help3_text')
 Text = [[
 🎗️| اهلا بك عزيزي √
-🔖| اوامر مدراء المجموعه كتالي⇓⇓
+??| اوامر مدراء المجموعه كتالي⇓⇓
 ●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●
 📍| تغير امر الاوامر
 📍| تغير امر م1 › الحد م8
@@ -10516,9 +10512,9 @@ Text = [[
 ●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●
 🔺| تنزيل جميع الرتب
 🔺| مسح المنشئين
-🔺| رفع/تنزيل منشئ
+🔺| رفع/تلااتتمزهو
 🔺| المنشئين
-🔺| رفع/تنزيل مدير
+🔺| رفع/تلااتتمزهو
 🔺| المدراء
 🔺| مسح المدراء
 🔺| مسح المنظفين
@@ -10564,10 +10560,10 @@ Text = [[
 ⚡| تعطيل
 📌| مسح الاساسين
 📌| المنشئين الاساسين
-📌| رفع/تنزيل منشئ اساسي
+📌| رفع/تلاامزهو
 📌| مسح المطورين
 📌| المطورين
-??| رفع | تنزيل مطور
+??| رفع | تلاامزهو
 ●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●
 💲| اسم البوت + مغادره
 💲| مغادره/ مغادرة
@@ -10703,7 +10699,7 @@ Text = [[
 ●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●
 📮| تفعيل ⇚ تعطيل 
 📮| القروبات ⇚ المشتركين 
-📮| رفع ⇚ تنزيل منشئ اساسي
+📮| رفع ⇚ تلاامزهو
 📮| مسح الاساسين ⇚ المنشئين الاساسين
 📮| مسح المنشئين ⇚ المنشئين
 🔹| اسم البوت + مغادره
@@ -10934,8 +10930,8 @@ https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. 
 end
 end
 end
-if text and text:match("^وضع لقب (.*)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
-local timsh = text:match("^وضع لقب (.*)$")
+if text and text:match("^وضع لقننب (.*)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
+local timsh = text:match("^وضع لمممقب (.*)$")
 function start_function(extra, result, success)
 if msg.can_be_deleted_ == false then 
 send(msg.chat_id_, msg.id_,' البوت ليس مشرف يرجى ترقيتي !') 
@@ -10952,18 +10948,18 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text == 'تعطيل اليوتيوب' and Constructor(msg) then  
+if text == 'تعطيل اليوعععتيوب' and Constructor(msg) then  
 send(msg.chat_id_,msg.id_,'\n• تم الامر بنجاح')  
 database:set(bot_id.."dl_yt_dl"..msg.chat_id_,"close") 
 return false  
 end 
-if text == 'تفعيل اليوتيوب' and Constructor(msg) then  
+if text == 'تفعيل اليوتيوعاااب' and Constructor(msg) then  
 send(msg.chat_id_,msg.id_,'\n• تم الامر بنجاح')  
 database:set(bot_id.."dl_yt_dl"..msg.chat_id_,"open") 
 return false  
 end
-if text and text:match('^بصمه (.*)$')  and database:get(bot_id.."dl_yt_dl"..msg.chat_id_) == "open" then            
-local Ttext = text:match('^بصمه (.*)$') 
+if text and text:match('^بصمععه (.*)$')  and database:get(bot_id.."dl_yt_dl"..msg.chat_id_) == "open" then            
+local Ttext = text:match('^بصمهععع (.*)$') 
 local InfoSearch = https.request('https://alsh-bg.ml/api/Search_MP3.php?Search='..URL.escape(Ttext))
 local JsonSearch = JSON.decode(InfoSearch)
 for k,vv in pairs(JsonSearch.results) do
@@ -10977,8 +10973,8 @@ end
 end
 end
 end
-if text and text:match('^صوت (.*)$')  and database:get(bot_id.."dl_yt_dl"..msg.chat_id_) == "open" then            
-local Ttext = text:match('^صوت (.*)$') 
+if text and text:match('^صوااات (.*)$')  and database:get(bot_id.."dl_yt_dl"..msg.chat_id_) == "open" then            
+local Ttext = text:match('^صوااات (.*)$') 
 local InfoSearch = https.request('https://alsh-bg.ml/api/Search_MP3.php?Search='..URL.escape(Ttext))
 local JsonSearch = JSON.decode(InfoSearch)
 for k,vv in pairs(JsonSearch.results) do
@@ -10992,18 +10988,18 @@ end
 end
 end
 end
-if text == 'تفعيل التنزيل' and Manager(msg) then   
+if text == 'تفعيل التنااازيل' and Manager(msg) then   
 database:del(bot_id..'dw:bot:api'..msg.chat_id_) 
 Text = '\n🔰| *تم تفعيل التنزيل*' 
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل التنزيل' and Manager(msg) then  
+if text == 'تعطيل التاااتنزيل' and Manager(msg) then  
 database:set(bot_id..'dw:bot:api'..msg.chat_id_,true) 
 Text = '\n🔘| *تم تعطيل التنزيل*' 
 send(msg.chat_id_, msg.id_,Text) 
 end 
-if text and text:match('^(.*) بصمه$') and not database:get(bot_id..'dw:bot:api'..msg.chat_id_) then            
-local Ttext = text:match('^(.*) بصمه$') 
+if text and text:match('^(.*) بصماااه$') and not database:get(bot_id..'dw:bot:api'..msg.chat_id_) then            
+local Ttext = text:match('^(.*) اااابصمه$') 
 local ytddl = https.request('https://devstorm.ml/sr.php?search='..URL.escape(Ttext))
 local zxe = JSON.decode(ytddl)
 for k,v in pairs(zxe.results) do
@@ -11013,8 +11009,8 @@ https.request('https://devstorm.ml/yt.php?url='..v.url..'&token='..token..'&chat
 end
 end
 end
-if text and text:match('^(.*) صوت$') and not database:get(bot_id..'dw:bot:api'..msg.chat_id_) then            
-local Ttext = text:match('^(.*) صوت$') 
+if text and text:match('^(.*) صعععوت$') and not database:get(bot_id..'dw:bot:api'..msg.chat_id_) then            
+local Ttext = text:match('^(.*) ععععصوت$') 
 local ytddl = https.request('https://devstorm.ml/sr.php?search='..URL.escape(Ttext))
 local zxe = JSON.decode(ytddl)
 for k,v in pairs(zxe.results) do
@@ -11024,8 +11020,8 @@ https.request('https://devstorm.ml/yt.php?url='..v.url..'&token='..token..'&chat
 end
 end
 end
-if text and text:match('^(.*) فيديو$') and not database:get(bot_id..'dw:bot:api'..msg.chat_id_) then            
-local Ttext = text:match('^(.*) فيديو$') 
+if text and text:match('^(.*) فيتتتديو$') and not database:get(bot_id..'dw:bot:api'..msg.chat_id_) then            
+local Ttext = text:match('^(.*) فيااااديو$') 
 local ytddl = https.request('https://devstorm.ml/sr.php?search='..URL.escape(Ttext))
 local zxe = JSON.decode(ytddl)
 for k,v in pairs(zxe.results) do
@@ -11035,12 +11031,12 @@ https.request('https://devstorm.ml/yt.php?url='..v.url..'&token='..token..'&chat
 end
 end
 end
-if text == 'تفعيل الردود' and Manager(msg) then   
+if text == 'تفعيل الردتتود' and Manager(msg) then   
 database:del(bot_id..'lock:reply'..msg.chat_id_)  
-Text = '🔰| تم تفعيل الردود'
+Text = '🔰| تم تفعيل الرندود'
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل الردود' and Manager(msg) then  
+if text == 'تعطيل الرتتتدود' and Manager(msg) then  
 database:set(bot_id..'lock:reply'..msg.chat_id_,true)  
 Text = '\n🔘| تم تعطيل الردود'
 send(msg.chat_id_, msg.id_,Text) 
