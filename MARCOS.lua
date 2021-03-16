@@ -153,6 +153,7 @@ io.popen("cd File_Bot && rm -rf games.lua.1")
 io.popen("cd File_Bot && rm -rf games.lua.2") 
 io.popen("cd File_Bot && rm -rf games.lua.3") 
 io.popen("cd File_Bot && wget https://raw.githubusercontent.com/ALRAQE/files/master/games.lua") 
+io.popen("cd File_Bot && wget https://raw.githubusercontent.com/ALRAQE/files/master/fun.lua") 
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
