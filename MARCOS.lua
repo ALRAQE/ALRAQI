@@ -4957,7 +4957,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Motte:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » [@"..username.."]'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*🔘| ⚡| تم تنزيل العضو كلب\nحبي رجع عضمه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5556,7 +5556,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Djajh:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » [@"..username.."]'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n⚡| تم رفع العضو دجاجه\n لاوصيـك اهم شي الـبـيـض 😂'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -7571,7 +7571,7 @@ tr = ' {★}'
 end
 text = text..">> [@"..ta.username_..']'..tr.."\n"
 if #admins == 0 then
-send(msg.chat_id_, msg.id_, "*📌| لا توجد بوتات في المجموعه*")
+send(msg.chat_id_, msg.id_, "*✧| لا توجد بوتات في المجموعه*")
 return false 
 end
 if #admins == i then 
