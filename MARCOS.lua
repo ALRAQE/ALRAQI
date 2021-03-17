@@ -5487,7 +5487,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Zahf:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم رفع العضو زاحف\nكمشتك حبي جيب رقم*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -5509,7 +5509,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Zahf:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم تنزيل العضو زاحف\n هاك حبي هاذا رقم لاس*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5556,7 +5556,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Djajh:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » [@"..username.."]'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n⚡| تم رفع العضو دجاجه\n لاوصيـك اهم شي الـبـيـض 😂'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -5578,7 +5578,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Djajh:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..']@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم تنزيل العضو دجاجه\n اكلنا البيض عليـك😂*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
