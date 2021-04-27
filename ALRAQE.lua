@@ -35,10 +35,6 @@ local User_Sudo = io.read():gsub('@','')
 if User_Sudo ~= '' then
 local GetInfoUser = https.request("https://devstorm.ml/api/hhsource/?id="..User_Sudo)
 local User_Info = JSON.decode(GetInfoUser) 
-if User_Info.Info.Chek == "is_block" then
-io.write('\n\27[1;31m If ip server is blocked : سيرفرك لقد تم حظره من السورس \n\27[0;39;49m')
-os.exit()
-end
 if User_Info.Info.Chek == "Not_Info" then
 io.write('\n\27[1;31m The UserName was not Saved : المعرف غلط ارسل المعرف صحيح\n\27[0;39;49m')
 os.execute('lua ALRAQE.lua')
@@ -4170,7 +4166,7 @@ tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^تنزيل م�
 end
 if text == 'تحديث السورس' and Dev_Bots(msg) then 
 os.execute('rm -rf ALRAQE.lua')
-os.execute('wget https://raw.githubusercontent.com/ALRAQE/ALRAQE/main/ALRAQE.lua')
+os.execute('wget https://raw.githubusercontent.com/ALRAQE/ALRAQI/main/ALRAQE.lua')
 send(msg.chat_id_, msg.id_,'• تم تحديث السورس')
 dofile('ALRAQE.lua')  
 end
