@@ -32,9 +32,7 @@ end
 if not redis:get(Server_Devid.."User_Devbots1") then
 io.write('\n\27[1;35mSend UserName For Sudo : ارسل معرف Carbon ...\n\27[0;39;49m')
 local User_Sudo = io.read():gsub('@','')
-if User_Sudo ~= '' then
-local GetInfoUser = User_Sudo
-local User_Info = JSON.decode(GetInfoUser) 
+local User_Info = JSON.decode(User_Sudo) 
 if User_Info.Info.Chek == "Not_Info" then
 io.write('\n\27[1;31m The UserName was not Saved : المعرف غلط ارسل المعرف صحيح\n\27[0;39;49m')
 os.execute('lua ALRAQE.lua')
@@ -49,7 +47,6 @@ redis:set(Server_Devid.."User_Devbots1",User_Info.Info.Username)
 redis:set(Server_Devid.."Id_Devbotsid",User_Info.Info.Id)
 else
 io.write('\n\27[1;31mThe UserName was not Saved : لم يتم حفظ معرف Carbon\n\27[0;39;49m')
-end 
 os.execute('lua ALRAQE.lua')
 end
 
@@ -7503,7 +7500,7 @@ name = string.gsub(name,"⛈","🌨🌨🌨🌨🌨⛈🌨🌨🌨🌨")
 name = string.gsub(name,"🌥","⛅️⛅️⛅️⛅️⛅️⛅️🌥⛅️⛅️⛅️⛅️")
 name = string.gsub(name,"⛄️","☃☃☃☃☃☃⛄️☃☃☃☃")
 name = string.gsub(name,"👨‍🔬","👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👨‍🔬👩‍🔬👩‍🔬👩‍🔬")
-name = string.gsub(name,"👨‍💻","👩‍💻👩‍💻👩‍‍💻👩‍‍💻👩‍💻👨‍💻👩‍💻👩‍💻👩‍💻")
+name = string.gsub(name,"👨‍💻","👩‍💻👩‍💻👩‍‍💻👩‍‍💻👩‍💻👨‍💻👩‍💻👩‍💻??‍💻")
 name = string.gsub(name,"👨‍🔧","👩‍🔧👩‍🔧👩‍🔧👩‍🔧👩‍🔧👩‍🔧👨‍🔧👩‍??")
 name = string.gsub(name,"👩‍🍳","👨‍🍳👨‍🍳👨‍🍳👨‍🍳👨‍🍳👩‍🍳👨‍🍳👨‍🍳👨‍🍳")
 name = string.gsub(name,"🧚‍♀","🧚‍♂🧚‍♂🧚‍♂🧚‍♂🧚‍♀🧚‍♂🧚‍♂")
